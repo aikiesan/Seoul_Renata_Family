@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seul 2026 — Guia da Família Renata</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* CSS HARDCODED - SEM VARIÁVEIS CSS */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: #F6F5F3;
+      color: #1A1A1A;
+      min-height: 100vh;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 2rem;
+    }
+    
+    /* Cabeçalho Fixo Premium */
+    .header-wrapper {
+      background-color: #FFFFFF;
+      border-bottom: 1px solid #E8E7E2;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding-top: 1.25rem;
+      padding-bottom: 0rem;
+    }
+    
+    .header {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 1rem 0.75rem 1rem;
+    }
+    
+    .header h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1A1A1A;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .header p {
+      font-size: 12.5px;
+      color: #5C5C5C;
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+    
+    /* Abas com Scroll Horizontal Suave */
+    .tabs-outer {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      overflow-x: auto;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE */
+    }
+    
+    .tabs-outer::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+    
+    .tabs {
+      display: flex;
+      gap: 6px;
+      padding: 6px 0 12px 0;
+      width: max-content;
+    }
+    
+    .tab {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12.5px;
+      font-weight: 500;
+      border: 1px solid #D0CFC9;
+      cursor: pointer;
+      background-color: #FFFFFF;
+      color: #5C5C5C;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: inherit;
+      white-space: nowrap;
+    }
+    
+    .tab:hover {
+      background-color: #EFEFED;
+      border-color: #A09E95;
+      color: #1A1A1A;
+    }
+    
+    .tab.active {
+      background-color: #E8614A;
+      color: #FFFFFF;
+      border-color: #E8614A;
+      box-shadow: 0 4px 10px rgba(232, 97, 74, 0.15);
+    }
+    
+    /* Layout dos Paineis de Conteúdo */
+    .guide {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 3rem 1rem;
+    }
+    
+    .panel {
+      display: none;
+      animation: fadeIn 0.25s ease-out;
+    }
+    
+    .panel.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Rótulo de Seção Estilizado */
+    .section-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #E8614A;
+      margin: 1.5rem 0 0.75rem 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      user-select: none;
+    }
+    
+    .section-label::after {
+      content: "";
+      flex-grow: 1;
+      height: 1px;
+      background-color: #E8E7E2;
+    }
+    
+    /* Grid de Cards (2 colunas no desktop, 1 no mobile) */
+    .panel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    
+    @media (max-width: 600px) {
+      .panel-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+    }
+    
+    /* Cards de Experiência Interativos */
+    .card {
+      background-color: #FFFFFF;
+      border: 1px solid #E8E7E2;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: #E8614A;
+      box-shadow: 0 8px 20px rgba(232, 97, 74, 0.06);
+    }
+    
+    /* Fallback Elegante para Imagem */
+    .card-img {
+      position: relative;
+      height: 145px;
+      background-color: #EFEEDB;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-bottom: 1px solid #E8E7E2;
+    }
+    
+    .fallback-emoji {
+      font-size: 44px;
+      user-select: none;
+    }
+    
+    .card-img img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.4s ease;
+    }
+    
+    .card-img img.loaded {
+      opacity: 1;
+    }
+    
+    .card:hover .card-img img.loaded {
+      transform: scale(1.04);
+    }
+    
+    /* Conteúdo dos Cards */
+    .card-content {
+      padding: 0.85rem 1rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    
+    .card-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    
+    .icon-box {
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 15px;
+    }
+    
+    /* Cores de caixas de ícone */
+    .ib-teal   { background-color: #E1F5EE; color: #1D9E75; }
+    .ib-amber  { background-color: #FAEEDA; color: #854F0B; }
+    .ib-blue   { background-color: #E6F1FB; color: #185FA5; }
+    .ib-coral  { background-color: #FAECE7; color: #993C1D; }
+    .ib-purple { background-color: #EEEDFE; color: #534AB7; }
+    .ib-green  { background-color: #EAF3DE; color: #3B6D11; }
+    
+    .card-title-box {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #1A1A1A;
+      line-height: 1.3;
+    }
+    
+    .card-sub {
+      font-size: 11.5px;
+      color: #5C5C5C;
+      margin-top: 1px;
+    }
+    
+    .card-body {
+      font-size: 12px;
+      color: #5C5C5C;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      flex-grow: 1;
+    }
+    
+    /* Tags dos Cards */
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: auto;
+    }
+    
+    .tag {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 8px;
+      font-size: 9.5px;
+      font-weight: 500;
+      text-transform: lowercase;
+    }
+    
+    .tag-free      { background-color: #EAF3DE; color: #3B6D11; }
+    .tag-tip       { background-color: #FAEEDA; color: #854F0B; }
+    .tag-food      { background-color: #FAECE7; color: #993C1D; }
+    .tag-transport { background-color: #E6F1FB; color: #185FA5; }
+    .tag-local     { background-color: #EEEDFE; color: #534AB7; }
+    .tag-night     { background-color: #2C2C2A; color: #D3D1C7; }
+    
+    /* Grid de Mini Cards (Dinheiro & Finanças) */
+    .grid2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    
+    @media (max-width: 480px) {
+      .grid2 {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .mini-card {
+      background-color: #FFFFFF;
+      border: 1px solid #E8E7E2;
+      border-radius: 10px;
+      padding: 0.75rem 0.9rem;
+    }
+    
+    .mini-title {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #1A1A1A;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .mini-body {
+      font-size: 11.5px;
+      color: #5C5C5C;
+      margin-top: 3px;
+      line-height: 1.5;
+    }
+    
+    /* Caixa de Destaque e Avisos dentro do Modal */
+    .highlight-box {
+      background-color: #F6F5F3;
+      border-radius: 8px;
+      padding: 0.75rem 0.9rem;
+      margin: 12px 0;
+      font-size: 12px;
+      color: #5C5C5C;
+      line-height: 1.6;
+      border-left: 3px solid #1D9E75;
+    }
+    
+    .warn-box {
+      background-color: #F6F5F3;
+      border-radius: 8px;
+      padding: 0.75rem 0.9rem;
+      margin: 12px 0;
+      font-size: 12px;
+      color: #5C5C5C;
+      line-height: 1.6;
+      border-left: 3px solid #EF9F27;
+    }
+    
+    /* Lista de Comidas em Grid/Card Menor */
+    .food-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .food-card {
+      background-color: #FFFFFF;
+      border: 1px solid #E8E7E2;
+      border-radius: 10px;
+      padding: 0.75rem 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    
+    .food-card:hover {
+      border-color: #E8614A;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(232, 97, 74, 0.04);
+    }
+    
+    .food-card-img {
+      width: 64px;
+      height: 64px;
+      border-radius: 6px;
+      background-color: #EFEEDB;
+      flex-shrink: 0;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #E8E7E2;
+    }
+    
+    .food-card-img .fallback-emoji {
+      font-size: 28px;
+    }
+    
+    .food-card-img img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .food-card-img img.loaded {
+      opacity: 1;
+    }
+    
+    .food-card-info {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    
+    .food-card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1A1A1A;
+    }
+    
+    .food-card-desc {
+      font-size: 11.5px;
+      color: #5C5C5C;
+      margin-top: 2px;
+      line-height: 1.5;
+    }
+    
+    /* MODAL BOTTOM-SHEET RESPONSIVO */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(26, 26, 26, 0.45);
+      backdrop-filter: blur(3px);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .modal-box {
+      background-color: #FFFFFF;
+      border-radius: 20px 20px 0 0;
+      width: 100%;
+      max-width: 600px;
+      max-height: 82vh;
+      display: flex;
+      flex-direction: column;
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.12);
+    }
+    
+    .modal-overlay.open .modal-box {
+      transform: translateY(0);
+    }
+    
+    .modal-handle-area {
+      padding: 10px 0 4px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .modal-handle {
+      width: 36px;
+      height: 4px;
+      background-color: #E8E7E2;
+      border-radius: 2px;
+      transition: background-color 0.2s;
+    }
+    
+    .modal-handle-area:hover .modal-handle {
+      background-color: #D0CFC9;
+    }
+    
+    .modal-header {
+      padding: 0 1.25rem 0.75rem 1.25rem;
+      border-bottom: 1px solid #E8E7E2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .modal-title-text {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1A1A1A;
+    }
+    
+    .modal-close {
+      background-color: #F6F5F3;
+      border: none;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      font-size: 12px;
+      color: #5C5C5C;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    
+    .modal-close:hover {
+      background-color: #E8614A;
+      color: #FFFFFF;
+    }
+    
+    .modal-body {
+      padding: 1.25rem;
+      overflow-y: auto;
+      font-size: 13px;
+      color: #5C5C5C;
+      line-height: 1.65;
+    }
+    
+    .modal-body p {
+      margin-bottom: 10px;
+    }
+    
+    .modal-body p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .modal-body strong {
+      color: #1A1A1A;
+      font-weight: 600;
+    }
+    
+    .modal-body ul {
+      margin-left: 18px;
+      margin-bottom: 10px;
+    }
+    
+    .modal-body li {
+      margin-bottom: 4px;
+    }
+    
+    @media (min-width: 768px) {
+      .modal-overlay {
+        align-items: center;
+      }
+      
+      .modal-box {
+        border-radius: 14px;
+        max-height: 75vh;
+        transform: scale(0.96);
+        opacity: 0;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+      }
+      
+      .modal-overlay.open .modal-box {
+        transform: scale(1);
+        opacity: 1;
+      }
+      
+      .modal-handle-area {
+        display: none;
+      }
+      
+      .modal-header {
+        padding: 1.25rem 1.25rem 0.75rem 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABEÇALHO FIXO -->
+  <div class="header-wrapper">
+    <div class="header">
+      <h1>🇰🇷 Seul 2026</h1>
+      <p>O guia de viagem definitivo para a Renata e família de 4 pessoas em julho de 2026. Roteiro testado, indicações locais autênticas e experiências sob medida.</p>
+    </div>
+    
+    <!-- ABA DE NAVEGAÇÃO -->
+    <div class="tabs-outer">
+      <div class="tabs">
+        <button class="tab active" onclick="show('logistica', this)">Logística</button>
+        <button class="tab" onclick="show('dia1', this)">Dia 1</button>
+        <button class="tab" onclick="show('dia2', this)">Dia 2</button>
+        <button class="tab" onclick="show('dia3', this)">Dia 3</button>
+        <button class="tab" onclick="show('dia4', this)">Dia 4</button>
+        <button class="tab" onclick="show('comida', this)">Comida</button>
+        <button class="tab" onclick="show('kpop', this)">K-pop &amp; Jovens</button>
+        <button class="tab" onclick="show('compras', this)">Compras</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div class="guide">
+
+    <!-- LOGÍSTICA -->
+    <div class="panel active" id="logistica">
+      <p class="section-label">Essenciais antes de sair do aeroporto</p>
+      <div class="panel-grid">
+        
+        <div class="card" onclick="openModal('d-tmoney', 'T-Money Card', '🚇')">
+          <div class="card-img">
+            <span class="fallback-emoji">🚇</span>
+            <img src="tmoney.jpg" alt="T-Money Card" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-blue">🚇</div>
+              <div class="card-title-box">
+                <div class="card-title">T-Money Card</div>
+                <div class="card-sub">Cartão de transporte recarregável de Seul</div>
+              </div>
+            </div>
+            <div class="card-body">O passe essencial e obrigatório para metrô, ônibus e táxis em Seul. Essencial para integração tarifária gratuita e agilizar trajetos.</div>
+            <div class="card-tags">
+              <span class="tag tag-transport">metrô</span>
+              <span class="tag tag-transport">ônibus</span>
+              <span class="tag tag-tip">recarregar com won físico</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('d-apps', 'Apps Essenciais', '📱')">
+          <div class="card-img">
+            <span class="fallback-emoji">📱</span>
+            <img src="kakaomaps.jpg" alt="Apps Essenciais" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-teal">📱</div>
+              <div class="card-title-box">
+                <div class="card-title">Apps Essenciais</div>
+                <div class="card-sub">KakaoMaps e KakaoTaxi</div>
+              </div>
+            </div>
+            <div class="card-body">O Google Maps não funciona para rotas na Coreia. Instale o KakaoMaps (navegação e metrô) e o KakaoTaxi (equivalente ao Uber) antes de embarcar.</div>
+            <div class="card-tags">
+              <span class="tag tag-tip">kakaoMaps (rotas)</span>
+              <span class="tag tag-tip">kakaoTaxi (viagens)</span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <p class="section-label">Clima e Condições em Julho</p>
+      <div class="panel-grid">
+        
+        <div class="card" onclick="openModal('d-clima', 'Julho em Seul — Calor e Monções', '🌡️')">
+          <div class="card-img">
+            <span class="fallback-emoji">🌡️</span>
+            <img src="convenience-food.jpg" alt="Clima" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-amber">🌡️</div>
+              <div class="card-title-box">
+                <div class="card-title">Julho em Seul — Clima</div>
+                <div class="card-sub">Altas temperaturas e monção (jangma)</div>
+              </div>
+            </div>
+            <div class="card-body">Verão úmido e quente com chuvas intensas mas rápidas. Como a família deve se preparar com hidratação, ar-condicionado e roupas leves de forma prática.</div>
+            <div class="card-tags">
+              <span class="tag tag-tip">guarda-chuva portátil</span>
+              <span class="tag tag-local">alta temporada</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('d-conveniencias-log', 'Lojas de Conveniência (CU, GS25)', '🏪')">
+          <div class="card-img">
+            <span class="fallback-emoji">🏪</span>
+            <img src="convenience-food.jpg" alt="Lojas de Conveniência" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-green">🏪</div>
+              <div class="card-title-box">
+                <div class="card-title">Lojas de Conveniência</div>
+                <div class="card-sub">GS25, CU e 7-Eleven pela cidade</div>
+              </div>
+            </div>
+            <div class="card-body">O refúgio de sobrevivência de Seul. Compre passes, comidas rápidas, lanches, bebidas geladas com gelo em saquinhos e ramen nas máquinas quentes a qualquer hora.</div>
+            <div class="card-tags">
+              <span class="tag tag-food">conveniência 24h</span>
+              <span class="tag tag-tip">bebida no saquinho</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="section-label">Dinheiro e Pagamentos</p>
+      <div class="grid2">
+        <div class="mini-card">
+          <div class="mini-title">💵 Dinheiro em Espécie (Won)</div>
+          <div class="mini-body">Fundamental para comida de rua e mercados tradicionais. Saque com cartões internacionais (Wise/Nomad) em caixas ATM marcados como "Global" no aeroporto ou estações de metrô.</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-title">💳 Cartão de Crédito</div>
+          <div class="mini-body">Mastercard e Visa são aceitos em praticamente 100% dos cafés, lojas de departamento, metrô e restaurantes estabelecidos de Seul. Faça o aviso de viagem antes de sair.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 1 -->
+    <div class="panel" id="dia1">
+      <p class="section-label">Roteiro Histórico & Cultural</p>
+      <div class="panel-grid">
+        
+        <div class="card" onclick="openModal('d-gyeongbokgung', 'Palácio Gyeongbokgung', '🏯')">
+          <div class="card-img">
+            <span class="fallback-emoji">🏯</span>
+            <img src="gyeongbokgung.jpg" alt="Gyeongbokgung" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-teal">🏯</div>
+              <div class="card-title-box">
+                <div class="card-title">Gyeongbokgung Palace</div>
+                <div class="card-sub">Manhã — O Palácio Principal da Dinastia Joseon</div>
+              </div>
+            </div>
+            <div class="card-body">Chegue cedo para ver a solene cerimônia de Troca da Guarda às 10h. Dica incrível: alugue o traje tradicional (Hanbok) e ganhe acesso gratuito ao palácio.</div>
+            <div class="card-tags">
+              <span class="tag tag-free">entrada ₩3.000 (grátis c/ Hanbok)</span>
+              <span class="tag tag-tip">troca da guarda às 10h e 14h</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('d-hanbok', 'Experiência de Hanbok', '👘')">
+          <div class="card-img">
+            <span class="fallback-emoji">👘</span>
+            <img src="hanbok.jpg" alt="Aluguel de Hanbok" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-coral">👘</div>
+              <div class="card-title-box">
+                <div class="card-title">Aluguel de Hanbok</div>
+                <div class="card-sub">Vista a história coreana nas ruas</div>
+              </div>
+            </div>
+            <div class="card-body">Viva a experiência cultural de vestir vestidos e vestimentas tradicionais, com direito a penteados típicos nas lojas nos arredores do palácio. Fotos memoráveis!</div>
+            <div class="card-tags">
+              <span class="tag tag-local">experiência cultural</span>
+              <span class="tag tag-tip">ótimo para fotos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('d-bukchon', 'Bukchon Hanok Village', '🏘️')">
+          <div class="card-img">
+            <span class="fallback-emoji">🏘️</span>
+            <img src="bukchon.jpg" alt="Bukchon Hanok Village" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-purple">🏘️</div>
+              <div class="card-title-box">
+                <div class="card-title">Bukchon Hanok Village</div>
+                <div class="card-sub">Tarde Cedo — Bairro residencial de casas tradicionais</div>
+              </div>
+            </div>
+            <div class="card-body">Um conjunto fotogênico de casinhas Hanoks conservadas em colina com vista dos prédios modernos de Seul ao fundo. Exige silêncio por ser área residencial real.</div>
+            <div class="card-tags">
+              <span class="tag tag-free">gratuito</span>
+              <span class="tag tag-tip">respeite o silêncio</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('d-cheonggyecheon', 'Cheonggyecheon Stream', '💧')">
+          <div class="card-img">
+            <span class="fallback-emoji">💧</span>
+            <img src="cheonggyecheon.jpg" alt="Cheonggyecheon" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-blue">💧</div>
+              <div class="card-title-box">
+                <div class="card-title">Cheonggyecheon Stream</div>
+                <div class="card-sub">Fim de Tarde — Córrego revitalizado no coração da cidade</div>
+              </div>
+            </div>
+            <div class="card-body">Um refúgio verdejante de 2 a 3 km de extensão. Caminhar ao longo do córrego é muito mais fresco em julho devido à refrigeração natural da água corrente e pontes.</div>
+            <div class="card-tags">
+              <span class="tag tag-free">gratuito</span>
+              <span class="tag tag-local">caminhada refrescante</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('d-gwangjang', 'Gwangjang Market', '🥞')">
+          <div class="card-img">
+            <span class="fallback-emoji">🥞</span>
+            <img src="mayak-kimbap.jpg" alt="Gwangjang Market" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-amber">🥞</div>
+              <div class="card-title-box">
+                <div class="card-title">Gwangjang Market</div>
+                <div class="card-sub">Jantar — O mercado gastronômico mais clássico</div>
+              </div>
+            </div>
+            <div class="card-body">Termine o dia jantando em bancos de madeira. Prove Bindaetteok (panqueca crocante de feijão) e os saborosos e viciantes Mayak Kimbap das tias coreanas.</div>
+            <div class="card-tags">
+              <span class="tag tag-food">comida de rua</span>
+              <span class="tag tag-tip">dinheiro em espécie</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DIA 2 -->
+    <div class="panel" id="dia2">
+      <p class="section-label">Vistas Panorâmicas & Noite Cosmopolita</p>
+      <div class="panel-grid">
+        
+        <div class="card" onclick="openModal('d-namsan', 'N Seoul Tower', '⛰️')">
+          <div class="card-img">
+            <span class="fallback-emoji">⛰️</span>
+            <img src="namsan.jpg" alt="Namsan" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-green">⛰️</div>
+              <div class="card-title-box">
+                <div class="card-title">Monte Namsan &amp; N Seoul Tower</div>
+                <div class="card-sub">Final de Tarde — Pôr do sol e vista panorâmica</div>
+              </div>
+            </div>
+            <div class="card-body">Inicie a subida arborizada às 16h30 para alcançar o topo a tempo de ver as luzes se acenderem sobre Seul. Descida fácil via ônibus circular público.</div>
+            <div class="card-tags">
+              <span class="tag tag-free">vista externa gratuita</span>
+              <span class="tag tag-transport">ônibus circular na descida</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('d-itaewon', 'Itaewon &amp; Haebangchon', '🌆')">
+          <div class="card-img">
+            <span class="fallback-emoji">🌆</span>
+            <img src="hongdae.jpg" alt="Itaewon" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-coral">🌆</div>
+              <div class="card-title-box">
+                <div class="card-title">Itaewon &amp; Haebangchon</div>
+                <div class="card-sub">Jantar — Distrito cosmopolita e encostas rústicas</div>
+              </div>
+            </div>
+            <div class="card-body">Localizados na base sul do Namsan, oferecem uma ampla gama de restaurantes locais charmosos (HBC) e bistrôs que misturam influências mundiais e coreanas.</div>
+            <div class="card-tags">
+              <span class="tag tag-local">gastronomia alternativa</span>
+              <span class="tag tag-night">noite vibrante</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('d-changdeokgung', 'Palácio Changdeokgung', '🏰')">
+          <div class="card-img">
+            <span class="fallback-emoji">🏰</span>
+            <img src="changdeokgung.jpg" alt="Changdeokgung" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-purple">🏰</div>
+              <div class="card-title-box">
+                <div class="card-title">Changdeokgung &amp; Jardim Secreto</div>
+                <div class="card-sub">Manhã — Palácio Patrimônio da UNESCO e bosques ocultos</div>
+              </div>
+            </div>
+            <div class="card-body">O Jardim Secreto real (Huwon) é uma maravilha de lagoas de lótus e pavilhões de madeira sob a mata nativa. Requer agendamento de tour guiado antecipado.</div>
+            <div class="card-tags">
+              <span class="tag tag-free">entrada ₩3.000</span>
+              <span class="tag tag-tip">reserva antecipada obrigatória</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DIA 3 -->
+    <div class="panel" id="dia3">
+      <p class="section-label">Feira Local de Verdade & Rio Hangang</p>
+      <div class="panel-grid">
+        
+        <div class="card" onclick="openModal('d-mangwon', 'Mangwon Market', '🛒')">
+          <div class="card-img">
+            <span class="fallback-emoji">🛒</span>
+            <img src="mangwon-market.jpg" alt="Mangwon Market" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-teal">🛒</div>
+              <div class="card-title-box">
+                <div class="card-title">Mangwon Market</div>
+                <div class="card-sub">Manhã — Mercado tradicional preferido dos coreanos</div>
+              </div>
+            </div>
+            <div class="card-body">Menos lotado e mais autêntico que o Gwangjang. Excelente para ver a vida real coreana, com preços mais baixos e ótimos frangos Dakgangjeong agridoces.</div>
+            <div class="card-tags">
+              <span class="tag tag-local">preferido por locais</span>
+              <span class="tag tag-food">lanches e quitandas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('d-hangang', 'Hangang Park &amp; Chimaek', '🏞️')">
+          <div class="card-img">
+            <span class="fallback-emoji">🏞️</span>
+            <img src="hangang-park.jpg" alt="Hangang Park" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-blue">🏞️</div>
+              <div class="card-title-box">
+                <div class="card-title">Hangang Park e Ritual do Chimaek</div>
+                <div class="card-sub">Tarde — Piquenique clássico com Frango Frito e Cerveja</div>
+              </div>
+            </div>
+            <div class="card-body">Alugue bikes, descanse no gramado de frente para o rio e viva a tradição máxima de Seul: peça frango frito por delivery para comer sob a sombra na esteira.</div>
+            <div class="card-tags">
+              <span class="tag tag-local">ritual coreano</span>
+              <span class="tag tag-food">chimaek</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('d-noryangjin', 'Noryangjin Fish Market', '🐟')">
+          <div class="card-img">
+            <span class="fallback-emoji">🐟</span>
+            <img src="noryangjin.jpg" alt="Noryangjin Fish Market" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-coral">🐟</div>
+              <div class="card-title-box">
+                <div class="card-title">Noryangjin Fish Market</div>
+                <div class="card-sub">Noite — Mercado colossal de peixes e frutos do mar</div>
+              </div>
+            </div>
+            <div class="card-body">Um espetáculo visual de peixes vivos nos tanques no térreo. Compre diretamente dos feirantes e leve para preparar grelhado ou no vapor no andar de cima.</div>
+            <div class="card-tags">
+              <span class="tag tag-food">frutos do mar frescos</span>
+              <span class="tag tag-night">aberto 24 horas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('d-sannakji', 'Polvo Vivo — Sannakji', '🐙')">
+          <div class="card-img">
+            <span class="fallback-emoji">🐙</span>
+            <img src="sannakji.jpg" alt="Sannakji" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-amber">🐙</div>
+              <div class="card-title-box">
+                <div class="card-title">Experiência do Sannakji</div>
+                <div class="card-sub">O prato mais desafiador da culinária coreana</div>
+              </div>
+            </div>
+            <div class="card-body">O polvo pequeno cortado na hora cujos tentáculos ainda se contorcem no prato devido a reflexos nervosos residuais. Uma iguaria famosa de Noryangjin.</div>
+            <div class="card-tags">
+              <span class="tag tag-food">polvo vivo cortado</span>
+              <span class="tag tag-tip">mastigar muito bem</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DIA 4 -->
+    <div class="panel" id="dia4">
+      <p class="section-label">Os Bairros Mais Badalados</p>
+      <div class="panel-grid">
+        
+        <div class="card" onclick="openModal('d-seongsu', 'Seongsu-dong', '✨')">
+          <div class="card-img">
+            <span class="fallback-emoji">✨</span>
+            <img src="seongsu-dong.jpg" alt="Seongsu-dong" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-purple">✨</div>
+              <div class="card-title-box">
+                <div class="card-title">Seongsu-dong</div>
+                <div class="card-sub">Manhã — O badalado centro industrial criativo</div>
+              </div>
+            </div>
+            <div class="card-body">Conhecido como o "Brooklyn de Seul", antigas fábricas de calçados viraram lojas conceito modernas de streetwear, galerias artísticas e cafés industriais.</div>
+            <div class="card-tags">
+              <span class="tag tag-local">tendências locais</span>
+              <span class="tag tag-tip">design e moda</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('d-ikseon', 'Ikseon-dong Hanok Village', '🏚️')">
+          <div class="card-img">
+            <span class="fallback-emoji">🏚️</span>
+            <img src="ikseon-dong.jpg" alt="Ikseon-dong" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-amber">🏚️</div>
+              <div class="card-title-box">
+                <div class="card-title">Ikseon-dong Hanok Village</div>
+                <div class="card-sub">Tarde — O labirinto de cafés em casinhas Hanok</div>
+              </div>
+            </div>
+            <div class="card-body">Ruas estreitas de casinhas tradicionais convertidas em confeitarias instagramáveis, lojas boutique e cafés de sobremesas muito populares entre os jovens seoulitas.</div>
+            <div class="card-tags">
+              <span class="tag tag-food">cafés instagramáveis</span>
+              <span class="tag tag-tip">becos estreitos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('d-lotte', 'Lotte World Tower', '🗼')">
+          <div class="card-img">
+            <span class="fallback-emoji">🗼</span>
+            <img src="namsan.jpg" alt="Lotte Tower" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-teal">🗼</div>
+              <div class="card-title-box">
+                <div class="card-title">Observatório Seoul Sky (Lotte Tower)</div>
+                <div class="card-sub">Opcional — O prédio mais alto da Coreia do Sul</div>
+              </div>
+            </div>
+            <div class="card-body">A subida inesquecível a 555 metros de altura em um elevador de alta tecnologia. Plataformas com piso de vidro de frente para o majestoso rio Hangang.</div>
+            <div class="card-tags">
+              <span class="tag tag-tip">reservar online</span>
+              <span class="tag tag-local">piso de vidro a 500m</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- COMIDA -->
+    <div class="panel" id="comida">
+      <p class="section-label">Myeongdong Street Food — Destaque Noturno</p>
+      
+      <div class="card" style="margin-bottom: 20px;" onclick="openModal('d-myeongdong-night', 'Myeongdong Street Food', '🍢')">
+        <div class="card-img" style="height: 180px;">
+          <span class="fallback-emoji">🍢</span>
+          <img src="myeongdong-night-market-58-1024x689.jpg" alt="Myeongdong Street Food" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+        </div>
+        <div class="card-content">
+          <div class="card-head">
+            <div class="icon-box ib-coral">🍢</div>
+            <div class="card-title-box">
+              <div class="card-title">Myeongdong Street Food — Avenida Gastronômica Noturna</div>
+              <div class="card-sub">Melhor à noite — Uma profusão de sabores e espetinhos a céu aberto</div>
+            </div>
+          </div>
+          <div class="card-body">Todos os finais de tarde a rua central de pedestres de Myeongdong é tomada por barracas iluminadas com comidas de rua modernas. Prove batatas furacão, queijo grelhado com mel, panquecas doces Hotteok fresquinhas e muito mais.</div>
+          <div class="card-tags">
+            <span class="tag tag-food">street food moderno</span>
+            <span class="tag tag-night">noite movimentada</span>
+            <span class="tag tag-tip">dinheiro e cartões rápidos</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="section-label">Pratos Icônicos — O que provar</p>
+      <div class="food-list">
+        
+        <div class="food-card" onclick="openModal('d-food-bindaetteok', 'Bindaetteok (빈대떡)', '🥞')">
+          <div class="food-card-img">
+            <span class="fallback-emoji">🥞</span>
+            <img src="bindaetteok.jpg" alt="Bindaetteok" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="food-card-info">
+            <div class="food-card-title">Bindaetteok (Panqueca de Feijão Mungo) — 빈대떡</div>
+            <div class="food-card-desc">Frita em óleo abundante até ficar extremamente crocante por fora e macia por dentro. A joia do Gwangjang Market.</div>
+          </div>
+        </div>
+
+        <div class="food-card" onclick="openModal('d-food-mayak', 'Mayak Kimbap (마약김밥)', '🍱')">
+          <div class="food-card-img">
+            <span class="fallback-emoji">🍱</span>
+            <img src="mayak-kimbap.jpg" alt="Mayak Kimbap" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="food-card-info">
+            <div class="food-card-title">Mayak Kimbap (Mini Rolinhos Viciantes) — 마약김밥</div>
+            <div class="food-card-desc">Mini rolinhos de arroz com vegetais em conserva envoltos em alga crocante e molho picante de mostarda coreana.</div>
+          </div>
+        </div>
+
+        <div class="food-card" onclick="openModal('d-food-kalguksu', 'Kalguksu (칼국수)', '🍜')">
+          <div class="food-card-img">
+            <span class="fallback-emoji">🍜</span>
+            <img src="kalguksu.jpg" alt="Kalguksu" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="food-card-info">
+            <div class="food-card-title">Kalguksu (Macarrão Cortado à Faca) — 칼국수</div>
+            <div class="food-card-desc">Sopa caseira fumegante e reconfortante com macarrão artesanal cortado na hora pelas tias coreanas (ajummas).</div>
+          </div>
+        </div>
+
+        <div class="food-card" onclick="openModal('d-food-chimaek', 'Chimaek (치맥)', '🍗')">
+          <div class="food-card-img">
+            <span class="fallback-emoji">🍗</span>
+            <img src="chimaek.jpg" alt="Chimaek" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="food-card-info">
+            <div class="food-card-title">Chimaek (Frango Frito Coreano + Cerveja) — 치맥</div>
+            <div class="food-card-desc">Frango frito de fritura dupla crocante incomparável, com coberturas agridoces, de queijo ou alho. Acompanha cerveja ou refri.</div>
+          </div>
+        </div>
+
+        <div class="food-card" onclick="openModal('d-food-bingsu', 'Bingsu (빙su)', '🍧')">
+          <div class="food-card-img">
+            <span class="fallback-emoji">🍧</span>
+            <img src="bingsu.jpg" alt="Bingsu" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="food-card-info">
+            <div class="food-card-title">Bingsu (Sobremesa Gelada de Leite) — 빙수</div>
+            <div class="food-card-desc">Flocos de neve de leite raspado com doces de feijão vermelho (Patbingsu) ou morango, manga, matcha e leite condensado.</div>
+          </div>
+        </div>
+
+        <div class="food-card" onclick="openModal('d-food-galbi', 'Korean BBQ', '🥩')">
+          <div class="food-card-img">
+            <span class="fallback-emoji">🥩</span>
+            <img src="galbi.jpg" alt="Galbi" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="food-card-info">
+            <div class="food-card-title">Galbi &amp; Samgyeopsal (Churrasco na Mesa) — 갈비/삼겹살</div>
+            <div class="food-card-desc">Costela de boi marinada ou barriga de porco grelhadas na brasa ao centro da mesa. O maior ritual social e culinário.</div>
+          </div>
+        </div>
+
+        <div class="food-card" onclick="openModal('d-food-beondegi', 'Beondegi (번데기)', '🐛')">
+          <div class="food-card-img">
+            <span class="fallback-emoji">🐛</span>
+            <img src="beondegi.jpg" alt="Beondegi" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="food-card-info">
+            <div class="food-card-title">Beondegi (Larvas de Bicho-da-Seda) — 번데기</div>
+            <div class="food-card-desc">Lanche exótico tradicional de rua: larvas cozidas no vapor com aroma terroso intenso. Um desafio divertido para a família!</div>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="section-label">Feiras e Mercados de Comida</p>
+      <div class="grid2">
+        <div class="mini-card">
+          <div class="mini-title">🛒 Mangwon Market</div>
+          <div class="mini-body">Excelente mercado local com preços honestos, quitandas, peixe cru e ótimos frangos Dakgangjeong agridoces.</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-title">🥞 Gwangjang Market</div>
+          <div class="mini-body">O mais antigo e lendário. Ideal para comer panquecas de feijão, kimbap e sopa de macarrão feita à faca.</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-title">🐟 Noryangjin</div>
+          <div class="mini-body">Tudo de frutos do mar frescos e polvo vivo. Você escolhe vivo nos aquários e eles preparam no segundo andar.</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-title">🌙 Bamdokkaebi</div>
+          <div class="mini-body">Mercado noturno sazonal nos finais de semana de verão à beira do Hangang Park. Food trucks, arte e brisa fresca.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- K-POP & JOVENS -->
+    <div class="panel" id="kpop">
+      <p class="section-label">Atrações para os Jovens &amp; Adolescentes</p>
+      <div class="panel-grid">
+        
+        <div class="card" onclick="openModal('d-kpop-hongdae', 'Hongdae — Busking e Lojas', '🎤')">
+          <div class="card-img">
+            <span class="fallback-emoji">🎤</span>
+            <img src="hongdae.jpg" alt="Hongdae Kpop" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-coral">🎤</div>
+              <div class="card-title-box">
+                <div class="card-title">Hongdae — Busking &amp; Lojas de Ídolos</div>
+                <div class="card-sub">O bairro universitário mais vibrante e juvenil</div>
+              </div>
+            </div>
+            <div class="card-body">Assista a shows de rua de dança K-pop idênticos aos clipes (busking) a partir das 18h, tire fotos divertidas em cabines instantâneas e explore lojas de mercadorias.</div>
+            <div class="card-tags">
+              <span class="tag tag-free">shows gratuitos</span>
+              <span class="tag tag-night">noite agitada</span>
+              <span class="tag tag-local">energia juvenil</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('d-kpop-ikseon', 'Ikseon-dong — Becos de Hanoks', '🏚️')">
+          <div class="card-img">
+            <span class="fallback-emoji">🏚️</span>
+            <img src="ikseon-dong.jpg" alt="Ikseon-dong Kpop" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-amber">🏚️</div>
+              <div class="card-title-box">
+                <div class="card-title">Ikseon-dong — Hanoks Instagramáveis</div>
+                <div class="card-sub">Cafés e confeitarias de design clássico nos becos</div>
+              </div>
+            </div>
+            <div class="card-body">Enclave histórico transformado em corredor de cafés com fachadas charmosas de Hanok, floriculturas artísticas e sorveterias em formato de peixe.</div>
+            <div class="card-tags">
+              <span class="tag tag-food">cafés de sobremesa</span>
+              <span class="tag tag-tip">becos fotogênicos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('d-kpop-seongsu', 'Seongsu-dong — Moda e Pop-Ups', '✨')">
+          <div class="card-img">
+            <span class="fallback-emoji">✨</span>
+            <img src="seongsu-dong.jpg" alt="Seongsu-dong Kpop" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-purple">✨</div>
+              <div class="card-title-box">
+                <div class="card-title">Seongsu-dong — Pop-Ups e Streetwear</div>
+                <div class="card-sub">O polo industrial rústico da vanguarda da moda</div>
+              </div>
+            </div>
+            <div class="card-body">Antigos galpões industriais que abrigam pop-ups artísticas de grifes famosas, marcas de streetwear coreano adoradas pelas celebridades e cafés futuristas.</div>
+            <div class="card-tags">
+              <span class="tag tag-local">streetwear</span>
+              <span class="tag tag-tip">lojas pop-up gratuitas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('d-kpop-conveniencias', 'Ritual de Lojas de Conveniência', '🏪')">
+          <div class="card-img">
+            <span class="fallback-emoji">🏪</span>
+            <img src="convenience-food.jpg" alt="Sobremesas nas Conveniências" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-green">🏪</div>
+              <div class="card-title-box">
+                <div class="card-title">O Ritual das Lojas de Conveniência</div>
+                <div class="card-sub">CU, GS25 e 7-Eleven pelas ruas</div>
+              </div>
+            </div>
+            <div class="card-body">Mania absoluta dos adolescentes: prepare ramen instantâneo em recipientes quentes de alumínio na hora e saboreie chás e refrescos coloridos em saquinhos sobre copos de gelo!</div>
+            <div class="card-tags">
+              <span class="tag tag-food">ramen instantâneo</span>
+              <span class="tag tag-tip">refresco no copo de gelo</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- COMPRAS -->
+    <div class="panel" id="compras">
+      <p class="section-label">Onde comprar — Lojas e Experiências Diferenciadas</p>
+      <div class="panel-grid">
+        
+        <div class="card" onclick="openModal('d-compras-insadong', 'Insadong — Artesanato', '🎨')">
+          <div class="card-img">
+            <span class="fallback-emoji">🎨</span>
+            <img src="bukchon.jpg" alt="Insadong" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-purple">🎨</div>
+              <div class="card-title-box">
+                <div class="card-title">Insadong — Cultura e Souvenirs</div>
+                <div class="card-sub">Galerias, papel tradicional Hanji e caligrafia</div>
+              </div>
+            </div>
+            <div class="card-body">O melhor lugar para comprar presentes artísticos e souvenirs refinados. Explore o complexo espiral Ssamziegil com pequenas lojas de artesãos independentes coreanos.</div>
+            <div class="card-tags">
+              <span class="tag tag-local">artesanato refinado</span>
+              <span class="tag tag-tip">ssamziegil</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('d-compras-skincare', 'Myeongdong Skincare', '🧴')">
+          <div class="card-img">
+            <span class="fallback-emoji">🧴</span>
+            <img src="myeongdong-night-market-58-1024x689.jpg" alt="Myeongdong Skincare" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-teal">🧴</div>
+              <div class="card-title-box">
+                <div class="card-title">Myeongdong — O Império da K-Beauty</div>
+                <div class="card-sub">A maior concentração mundial de cosméticos e beleza</div>
+              </div>
+            </div>
+            <div class="card-body">O paraíso do skincare! Encontre lojas conceito gigantescas de marcas como Innisfree, Cosrx e Olive Young. Aproveite ótimos descontos Tax Free no caixa e amostras grátis.</div>
+            <div class="card-tags">
+              <span class="tag tag-tip">lojas olive young</span>
+              <span class="tag tag-local">desconto tax free</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('d-compras-moda', 'Moda Seongsu e Hongdae', '👗')">
+          <div class="card-img">
+            <span class="fallback-emoji">👗</span>
+            <img src="seongsu-dong.jpg" alt="Moda Seongsu" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-amber">👗</div>
+              <div class="card-title-box">
+                <div class="card-title">Moda Conceito &amp; Streetwear</div>
+                <div class="card-sub">Marcas independentes, brechós e vintage curado</div>
+              </div>
+            </div>
+            <div class="card-body">Esqueça as lojas genéricas de shoppings e compre casacos retrô, jeans customizados, roupas conceituais e acessórios descolados de jovens designers coreanos.</div>
+            <div class="card-tags">
+              <span class="tag tag-local">streetwear coreano</span>
+              <span class="tag tag-tip">brechós vintage</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('d-compras-daiso', 'Daiso Coreana', '📦')">
+          <div class="card-img">
+            <span class="fallback-emoji">📦</span>
+            <img src="tmoney.jpg" alt="Daiso" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-blue">📦</div>
+              <div class="card-title-box">
+                <div class="card-title">Daiso (다이소) — Utilidades Divertidas</div>
+                <div class="card-sub">Produtos de qualidade surpreendente por 1.000 a 5.000 Won</div>
+              </div>
+            </div>
+            <div class="card-body">A mega Daiso de Myeongdong tem 12 andares de utilidades sensacionais: papelaria fofa, organizadores brilhantes de bagagem, maquiagem e presentes práticos.</div>
+            <div class="card-tags">
+              <span class="tag tag-tip">compras baratas</span>
+              <span class="tag tag-local">papelaria e lembranças</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MODAL BOTTOM-SHEET ÚNICO E DINÂMICO -->
+  <div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
+    <div class="modal-box">
+      <div class="modal-handle-area" onclick="closeModal()">
+        <div class="modal-handle"></div>
+      </div>
+      <div class="modal-header">
+        <span class="modal-title-text" id="modal-title-text"></span>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body" id="modal-body-content"></div>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO EXPANDIDO DAS EXPERIÊNCIAS (OCULTO EM DISPLAY NONE) -->
+  <div style="display: none;">
+
+    <!-- LOGISTICA DETAILS -->
+    <div id="d-tmoney">
+      <p>Compre o cartão físico <strong>T-Money</strong> logo na chegada em máquinas automáticas no aeroporto (Incheon ou Gimpo) ou em qualquer loja de conveniência (CU, GS25, 7-Eleven).</p>
+      <p>O cartão físico custa de ₩3.000 a ₩4.000. Para utilizá-lo, você deve carregá-lo com saldo utilizando <strong>dinheiro físico coreano (Won)</strong> nas máquinas das estações ou caixas das lojas de conveniência.</p>
+      <p>Ele serve para pagar metrô, ônibus urbanos e a grande maioria dos táxis de Seul. A sua grande vantagem é permitir a <strong>integração tarifária gratuita</strong> entre metrô e ônibus: se você pegar um ônibus em até 30 minutos após sair do metrô, o trajeto de ônibus sai gratuito ou com grande desconto!</p>
+      <div class="highlight-box">
+        💡 <strong>Dica do Lucas:</strong> Ao fim da viagem, se sobrar saldo no cartão, você pode solicitar o reembolso em dinheiro nos guichês do aeroporto ou estações (cobram uma taxa administrativa irrisória de ₩500).
+      </div>
+    </div>
+
+    <div id="d-apps">
+      <p>Na Coreia do Sul, o Google Maps não fornece trajetos precisos de navegação a pé ou transporte público por restrições governamentais de segurança de mapeamento nacional. Instale estes dois aplicativos indispensáveis:</p>
+      <ul>
+        <li><strong>KakaoMaps</strong>: O substituto perfeito. Oferece rotas exatas, indica em qual vagão de metrô entrar para fazer baldeações mais rápidas e qual saída da estação utilizar. Possui versão completa em inglês.</li>
+        <li><strong>KakaoTaxi</strong>: Equivalente ao Uber ou 99. Evita mal-entendidos e barreiras de idioma, pois você digita a origem e o destino no mapa em inglês. Você pode cadastrar cartões internacionais de pagamento no app ou optar por pagar o motorista em dinheiro ou cartão físico diretamente ao fim da corrida.</li>
+      </ul>
+      <div class="highlight-box">
+        💡 <strong>Dica Importante:</strong> Registre as contas e faça a verificação de SMS utilizando seu número de celular brasileiro antes de embarcar, pois o envio de códigos internacionais funciona perfeitamente no Brasil e pode dar erros com e-SIMs de dados temporários no exterior.
+      </div>
+    </div>
+
+    <div id="d-clima">
+      <p>Julho em Seul é o pico do verão úmido e quente asiático. A temperatura fica entre 28°C e 35°C com umidade relativa do ar elevadíssima. É também o período das monções (*jangma*), marcado por pancadas de chuvas intensas mas que passam muito rápido.</p>
+      <p><strong>Dicas de Preparação:</strong></p>
+      <ul>
+        <li>Tenha sempre na mochila um guarda-chuva leve e de secagem rápida (se esquecer, compre em qualquer conveniência em cada esquina por valores baixíssimos).</li>
+        <li>Roupas leves de secagem rápida e tênis de caminhada muito macios e confortáveis são indispensáveis.</li>
+        <li><strong>Ar-Condicionado:</strong> Os trens de metrô, ônibus, lojas de conveniência e restaurantes têm ar-condicionado potentíssimo. Leve um casaco leve na bolsa para evitar choques térmicos desconfortáveis.</li>
+        <li>Hidratação é fundamental: compre garrafas de água baratas nas conveniências a todo momento (custa menos de ₩1.000).</li>
+      </ul>
+      <div class="warn-box">
+        ⚠️ Julho é alta temporada turística na Coreia devido às férias de verão. Reserve hospedagens, restaurantes famosos e observatórios com antecedência considerável. Note que os tours noturnos do palácio Gyeongbokgung terminam em junho e não estarão disponíveis.
+      </div>
+    </div>
+
+    <div id="d-conveniencias-log">
+      <p>As lojas de conveniência coreanas (como CU, GS25 e 7-Eleven) são verdadeiras instituições sociais e o ponto de apoio máximo do viajante.</p>
+      <p><strong>Experiências Divertidas para Fazer:</strong></p>
+      <ul>
+        <li><strong>O Copo de Gelo e Saquinho:</strong> Vá ao freezer, pegue um copo plástico com gelo selado, compre um saquinho de refresco doce de frutas (café doce, chá de pêssego ou limonada azul), abra e despeje. Refrescante, delicioso e muito barato!</li>
+        <li><strong>Ramen na Máquina Automática:</strong> Compre um ramen instantâneo de copo ou tigela de alumínio, leve à bancada de cozimento automático da loja. A máquina injeta água quente e ferve o macarrão na temperatura exata em 3 minutos. Adicione queijo processado fatiado por cima!</li>
+        <li><strong>Triângulos Samgak Kimbap:</strong> Arroz temperado envolto em alga super crocante com recheio de carne Bulgogi ou atum apimentado. Uma embalagem plástica numerada de 3 passos garante que a alga fique seca e crocante até a hora de abrir.</li>
+        <li>Leites de sabor doce (o clássico leite de banana coreano da marca Binggrae) e sorvetes com formatos fofos (formato de peixe com recheio de waffle e feijão doce).</li>
+      </ul>
+    </div>
+
+    <!-- DIA 1 DETAILS -->
+    <div id="d-gyeongbokgung">
+      <p>Construído em 1395, o palácio <strong>Gyeongbokgung</strong> é o maior e mais importante dos cinco grandes palácios reais da Dinastia Joseon.</p>
+      <p><strong>Atividades Principais:</strong></p>
+      <ul>
+        <li><strong>Troca da Guarda:</strong> Acontece todos os dias (exceto terças-feiras) às 10h00 e às 14h00 em frente ao portão sul Gwanghwamun. É gratuita, solene e dura cerca de 20 minutos com trajes históricos e música militar folclórica.</li>
+        <li><strong>Entrada Gratuita com Hanbok:</strong> O ingresso individual custa ₩3.000 por adulto, mas se você estiver vestindo o traje tradicional (Hanbok), a entrada é **totalmente gratuita**!</li>
+        <li>Explore o pavilhão Gyeonghoeru sustentado por colunas sobre o lago artificial e o pavilhão Hyangwonjeong, locais de extrema harmonia geométrica e ótimos cenários fotográficos.</li>
+      </ul>
+      <div class="highlight-box">
+        💡 <strong>Dica do Lucas:</strong> Chegue às 09h00 na abertura para caminhar no palácio antes do sol forte de julho e garantir as melhores fotos sem grandes multidões de turistas ao fundo.
+      </div>
+    </div>
+
+    <div id="d-hanbok">
+      <p>O aluguel de <strong>Hanbok</strong> é uma atividade cultural fantástica, divertida e altamente respeitada em Seul, procurada tanto por turistas ocidentais quanto por jovens coreanos locais.</p>
+      <p><strong>Como Funciona:</strong></p>
+      <ul>
+        <li>Existem dezenas de lojas de aluguel nas saídas das estações de metrô vizinhas ao palácio (como a estação Anguk).</li>
+        <li>O aluguel básico custa em torno de ₩10.000 a ₩15.000 por um período de 2 horas.</li>
+        <li>Os pacotes completos incluem o traje limpo e passado, armação interna para dar volume à saia, bolsinha temática complementar e penteado trançado clássico ornamentado com fitas tradicionais.</li>
+        <li>Há estilos tradicionais clássicos e versões modernas com tecidos brilhantes e bordados dourados. Os adolescentes adoram escolher e combinar as peças!</li>
+      </ul>
+    </div>
+
+    <div id="d-bukchon">
+      <p>A vila <strong>Bukchon Hanok Village</strong> é um bairro histórico real de Seul, que abriga centenas de casas tradicionais de madeira (*Hanok*) que remontam à Dinastia Joseon.</p>
+      <p>As ladeiras e ruelas estreitas oferecem um contraste visual magnífico das telhas curvas tradicionais contra os arranha-céus cinzentos e espelhados do moderno centro financeiro de Seul ao fundo.</p>
+      <p>O ponto fotográfico mais famoso é a ladeira da rua *Bukchon-ro 11-gil*, de onde se tem o panorama clássico perfeito.</p>
+      <div class="warn-box">
+        ⚠️ <strong>Atenção ao Respeito Local:</strong> Este é um bairro residencial com moradores reais morando e trabalhando. Existem voluntários pelas ruas com placas de silêncio. Por favor, fale baixo, não fotografe o interior das residências e respeite o sossego dos moradores.
+      </div>
+      <p>Após a descida, caminhe pela rua de **Insadong**, repleta de lojas de papel artesanal, cerâmicas finas, galerias de arte clássica e casas de chá tradicionais.</p>
+    </div>
+
+    <div id="d-cheonggyecheon">
+      <p>O córrego <strong>Cheonggyecheon</strong> é um dos projetos de revitalização urbana mais bem-sucedidos do mundo. Nos anos 50, o local foi aterrado e coberto por uma avenida e um viaduto elevado de concreto.</p>
+      <p>Em 2005, o viaduto foi demolido e o canal de águas limpas foi reaberto e arborizado ao nível do subsolo das avenidas centrais.</p>
+      <p><strong>Por que Visitar em Julho:</strong></p>
+      <ul>
+        <li>A temperatura nas margens do córrego, abaixo do nível da rua e sob a sombra natural das pontes de concreto, chega a ser de **3°C a 4°C mais fresca** que o asfalto das avenidas acima.</li>
+        <li>O percurso de caminhada é pavimentado, cercado de plantas nativas, peixinhos na água e pequenas cachoeiras.</li>
+        <li>Você encontrará bancos de pedra ideais para descansar os pés exaustos na água cristalina, muito frequentado por trabalhadores locais após o expediente.</li>
+      </ul>
+    </div>
+
+    <div id="d-gwangjang">
+      <p>Fundado em 1905, o <strong>Gwangjang Market</strong> é um dos mercados de rua mais antigos, amplos e folclóricos da Coreia do Sul. O setor central de alimentação (*Meokjagolmok*) é um verdadeiro labirinto de sabores.</p>
+      <p><strong>As Joias Gastronômicas do Mercado:</strong></p>
+      <ul>
+        <li><strong>Bindaetteok (빈대떡)</strong>: Panqueca frita de feijão mungo moído em moinhos de pedra com cebolinha, kimchi e brotos. Crocante por fora e servida com molho de soja e pedaços de cebola ácida.</li>
+        <li><strong>Mayak Kimbap (마약김밥)</strong>: Mini rolinhos finos de arroz temperado com cenoura, espinafre e nabo cozido em alga crocante. Acompanha o viciante molho de shoyu e mostarda amarela coreana picante.</li>
+        <li><strong>Kalguksu (칼국us)</strong>: Macarrão artesanal cortado à faca cozido em caldo quente rico e caseiro de anchovas e legumes na sua frente pelas simpáticas tias.</li>
+      </ul>
+      <div class="warn-box">
+        ⚠️ Devido à fama internacional em documentários (como na Netflix), algumas barraquinhas de frente para corredores principais cobram preços inflados de turistas estrangeiros. Prefira sentar em barracas repletas de clientes locais coreanos e sempre valide os preços do cardápio físico antes de consumir. Leve dinheiro físico para pagamento.
+      </div>
+    </div>
+
+    <!-- DIA 2 DETAILS -->
+    <div id="d-namsan">
+      <p>O <strong>Monte Namsan</strong> fica localizado no centro geográfico de Seul e abriga em seu topo a famosa **N Seoul Tower**, com 236 metros de altura.</p>
+      <p><strong>Roteiro Recomendado:</strong></p>
+      <ul>
+        <li>Inicie a subida por volta das 16h30 a partir de Myeongdong. A trilha a pé é pavimentada, sombreada por belas árvores nativas e equipada com bancos de descanso. Leva de 40 a 50 minutos de caminhada saudável.</li>
+        <li>Chegar ao topo antes das 18h00 garante assistir ao pôr do sol espetacular e a transição do dia para a noite com o acender das luzes urbanas da metrópole.</li>
+        <li>A área das plataformas da base da torre é totalmente gratuita para circulação e oferece excelentes vistas panorâmicas, além dos famosos varandins ornamentados com milhares de "cadeados do amor" deixados por casais.</li>
+        <li>A subida ao observatório fechado interno (Seoul Sky da N Seoul Tower) requer ingresso pago à parte, embora a vista externa gratuita seja igualmente maravilhosa.</li>
+      </ul>
+      <div class="highlight-box">
+        💡 <strong>Descida Sem Esforço:</strong> Para evitar a descida íngreme no escuro, pegue o ônibus circular público gratuito (Linhas 01A ou 01B) que parte com grande frequência do topo do monte e conecta você rapidamente a estações centrais de metrô por tarifas urbanas baixíssimas.
+      </div>
+    </div>
+
+    <div id="d-itaewon">
+      <p>O bairro de <strong>Itaewon</strong> e as ladeiras adjacentes de <strong>Haebangchon (HBC)</strong> formam a região mais multicultural de Seul, localizada na base sul do monte Namsan.</p>
+      <p><strong>Haebangchon (HBC)</strong>:</p>
+      <ul>
+        <li>Bairro rústico situado em encostas acentuadas, conhecido por abrigar cafés de especialidade, pequenos ateliês de design, estúdios artísticos e bistrôs intimistas excelentes.</li>
+        <li>É o refúgio perfeito dos seoulitas que procuram escapar de cadeias comerciais genéricas e desfrutar de jantares autorais de alta gastronomia que misturam sabores locais e globais em ambientes acolhedores.</li>
+        <li>Muito simples de acessar via KakaoTaxi ou ônibus circular público após a descida do Namsan.</li>
+      </ul>
+    </div>
+
+    <div id="d-changdeokgung">
+      <p>Construído em 1405, o palácio <strong>Changdeokgung</strong> é considerado o palácio real que melhor integra a arquitetura palaciana à topografia natural nativa ao seu redor, sendo tombado como Patrimônio Mundial da UNESCO.</p>
+      <p><strong>O Jardim Secreto (Huwon - 후원):</strong></p>
+      <ul>
+        <li>Ocupa cerca de 60% do complexo. Servia como refúgio de lazer, descanso e estudo poético para os reis da Dinastia Joseon.</li>
+        <li>O jardim abriga lagos com flores de lótus de simetria impecável, pavilhões de madeira requintados nas margens, árvores centenárias gigantescas e riachos sinuosos. Em julho, as copas verdes fornecem sombras fresquíssimas ótimas contra o sol.</li>
+        <li><strong>Reserva Antecipada Fundamental:</strong> O acesso ao Jardim Secreto é restrito a visitas em grupo guiadas (há passeios específicos em inglês). As reservas abrem no site oficial exatamente **6 dias antes da data desejada, às 10h00 da manhã (horário coreano)**. Por ter vagas muito disputadas, reserve imediatamente no minuto de abertura das vagas!</li>
+      </ul>
+    </div>
+
+    <!-- DIA 3 DETAILS -->
+    <div id="d-mangwon">
+      <p>O <strong>Mangwon Market</strong> é a escolha número um dos moradores de Seul que buscam fugir das multidões de turistas do Gwangjang e experimentar compras e lanches com preços honestos.</p>
+      <p>De manhã, o mercado apresenta a autêntica rotina das donas de casa coreanas comprando vegetais frescos, temperos e carnes.</p>
+      <p><strong>O Que Comer Por Lá:</strong></p>
+      <ul>
+        <li><strong>Dakgangjeong (닭강정)</strong>: Pedacinhos crocantes e suculentos de frango frito desossado cobertos por molhos especiais (agridoce com queijo, molho de mel e pimenta de cheiro). Compre os copos de tamanho individual de sabores diferentes!</li>
+        <li>Croquetes fritos recheados de legumes frescos ou queijo derretido, e pãezinhos doces tradicionais.</li>
+      </ul>
+      <p>O mercado é extremamente acolhedor e localiza-se a poucos minutos de caminhada da entrada do <strong>Mangwon Hangang Park</strong>, facilitando o piquenique à beira do rio.</p>
+    </div>
+
+    <div id="d-hangang">
+      <p>Os parques beira-rio ao longo do imenso rio <strong>Hangang</strong> são os principais refúgios de lazer público de Seul. O parque de Mangwon é calmo e repleto de locais, enquanto o parque de Yeouido é monumental e vibrante.</p>
+      <p><strong>O Ritual do Chimaek (치맥):</strong></p>
+      <ul>
+        <li>Junção de *Chicken* (frango frito) e *Maekju* (cerveja, ou refrigerante refrescante). É o piquenique de lazer preferido dos coreanos nos dias quentes de verão em julho.</li>
+        <li><strong>Como Funciona:</strong> Compre uma esteira plástica de piquenique descartável em qualquer loja de conveniência à beira-rio por cerca de ₩2.000, encontre uma sombra de árvore no gramado e de frente para o rio.</li>
+        <li>Faça o pedido de frango frito pelo app de entrega (Baemin ou Coupang Eats). Os motoqueiros de Seul entregam o pedido quentinho diretamente nas "zonas de entrega de delivery" (*delivery zones*) sinalizadas do parque usando GPS das avenidas adjacentes! É rápido, prático e muito divertido.</li>
+        <li>Como alternativa, há quiosques e restaurantes de frango dentro dos próprios parques, além de quiosques de conveniência com máquinas de ferver ramen instantâneo automáticas em tigelas de alumínio. As crianças e adolescentes vão adorar!</li>
+      </ul>
+    </div>
+
+    <div id="d-noryangjin">
+      <p>O mercado <strong>Noryangjin Fish Market</strong> é o maior centro atacadista e varejista de peixes e frutos do mar frescos e vivos de Seul, fundado em 1927 e renovado em um moderno edifício de vários andares.</p>
+      <p><strong>Como Funciona a Experiência:</strong></p>
+      <ul>
+        <li><strong>Escolha no Térreo:</strong> Caminhe pelas dezenas de corredores repletos de aquários transparentes com espécies exóticas gigantescas de caranguejo, camarões, lulas, vieiras e peixes para sashimi. Escolha o seu preferido, negocie o valor com o feirante e pague diretamente a ele.</li>
+        <li><strong>Preparo no 2º Andar:</strong> Um ajudante do feirante levará você e os frutos do mar vivos escolhidos até um restaurante no segundo andar do mercado.</li>
+        <li>Você escolhe como deseja o preparo de cada item: cozido no vapor (caranguejo gigante), grelhado na chapa (camarões e vieiras), cru fatiado em sashimi (peixes) ou cozido em um caldo picante com ervas (*Maeuntang*).</li>
+      </ul>
+      <div class="warn-box">
+        ⚠️ <strong>Atenção aos Custos Extras:</strong> Os restaurantes do andar superior cobram uma taxa básica de talheres por pessoa (*table charge*) e uma taxa extra de preparo cobrada por quilo de alimento cozido. Pergunte e confirme estes custos com o garçom no momento em que entregar os ingredientes para evitar qualquer surpresa desagradável na cobrança final.
+      </div>
+    </div>
+
+    <div id="d-sannakji">
+      <p>O prato <strong>Sannakji (산낙지)</strong> consiste em um pequeno polvo de tentáculos finos (*nakji*) retirado do tanque vivo, imediatamente higienizado, picado em pedaços pequenos e servido na hora.</p>
+      <p>Devido à atividade nervosa residual intensa, os pedaços de tentáculos continuam a se contorcer vigorosamente no prato de servir.</p>
+      <p>É temperado com óleo de gergelim tostado, sementes de gergelim e pitadas de sal.</p>
+      <p><strong>Como Consumir com Segurança:</strong></p>
+      <ul>
+        <li>Passe o pedaço de polvo no molho de óleo de gergelim (funciona como um lubrificante que impede que as ventosas ativas grudem na sua boca ou garganta).</li>
+        <li><strong>Mastigue exaustivamente</strong> cada pedaço antes de engolir. Tem sabor suave e uma textura deliciosamente elástica. Uma verdadeira façanha de aventura gastronômica para os adolescentes e adultos corajosos tirarem fotos e gravarem vídeos!</li>
+      </ul>
+    </div>
+
+    <!-- DIA 4 DETAILS -->
+    <div id="d-seongsu">
+      <p>O bairro de <strong>Seongsu-dong</strong> é carinhosamente chamado de "Brooklyn de Seul". Originalmente, era um polo fabril e industrial de metalurgia e sapatarias tradicionais na década de 1970.</p>
+      <p>Nas últimas décadas, a juventude artística coreana e grandes marcas conceituais ocuparam os galpões de tijolos vermelhos expostos e estruturas de concreto rústicas, convertendo-os em um centro vibrante de design.</p>
+      <p><strong>O que Esperar:</strong></p>
+      <ul>
+        <li>Lojas pop-up artísticas espetaculares de marcas de K-pop, vestuário e cosméticos com experiências sensoriais interativas imersivas e gratuitas de alto padrão.</li>
+        <li>Cafés monumentais e confeitarias de arquitetura industrial refinada (como Onion Seongsu, com um lindo telhado ao ar livre, e o famoso Café Daelim Changgo).</li>
+        <li>Lojas conceituais de streetwear de designers independentes e marcas mundiais famosas (como a monumental fachada espelhada da Dior Seongsu). Fica muito próximo à bela floresta urbana de **Seoul Forest**.</li>
+      </ul>
+    </div>
+
+    <div id="d-ikseon">
+      <p>O bairro de <strong>Ikseon-dong Hanok Village</strong> é um dos enclaves comerciais mais charmosos e pitorescos de Seul, fundado originalmente em 1920 como um conjunto habitacional residencial acessível de casas tradicionais (*Hanok*).</p>
+      <p>Diferente de Bukchon, as casas Hanoks de Ikseon-dong foram inteiramente convertidas no nível térreo em comércios boutiques e confeitarias conceituais fantásticas.</p>
+      <p><strong>Destaques do Bairro:</strong></p>
+      <ul>
+        <li>Ruelas extremamente estreitas repletas de floriculturas suspensas, cafeterias de sobremesas famosas pelo bolo *Soufflé Pancake* suculento, e sorveterias artísticas com cones coloridos.</li>
+        <li>Lojas de acessórios artesanais delicados, roupas vintage e cabines automáticas de fotos instantâneas com acessórios fofos (*Photo Booths*), onde os adolescentes passam horas tirando fotos divertidas.</li>
+      </ul>
+      <div class="highlight-box">
+        💡 <strong>Dica de Visitação:</strong> Por ter ruelas de pedestres muito estreitas, o bairro costuma lotar nas últimas horas da tarde e finais de semana. Programe sua visita para antes das 15h00 nos dias de semana para passear confortavelmente.
+      </div>
+    </div>
+
+    <div id="d-lotte">
+      <p>A imensa torre <strong>Lotte World Tower</strong>, com 555 metros de altura e 123 andares, é o edifício mais alto da Coreia do Sul e o 6º mais alto do mundo, localizada no bairro de Jamsil.</p>
+      <p><strong>A Experiência no Observatório Seoul Sky:</strong></p>
+      <ul>
+        <li>A subida é feita através do *Sky Shuttle*, um elevador de alta velocidade com telas de projeção de LED de 360° nas paredes internas que contam a história de Seul em uma viagem multimídia incrível de 60 segundos.</li>
+        <li>No observatório (andares 117 a 123), o grande destaque é o **piso de vidro translúcido** a quase 500 metros de altura, onde você caminha com a sensação extraordinária de flutuar livremente sobre os carros e pontes do rio Hangang lá embaixo.</li>
+        <li>O local conta com café panorâmico de altura e loja de lembranças exclusivas. O ingresso custa cerca de ₩27.000 por adulto e vale muito reservar online com antecedência.</li>
+      </ul>
+    </div>
+
+    <!-- COMIDA DETAILS -->
+    <div id="d-myeongdong-night">
+      <p>A partir das 17h00 de todas as noites, a avenida central exclusiva de pedestres de <strong>Myeongdong</strong> se transforma em uma monumental feira gastronômica a céu aberto, com dezenas de carrinhos de comida de rua muito bem organizados.</p>
+      <p>É uma experiência repleta de luzes neon, cores e aromas fascinantes, perfeita para provar a culinária coreana urbana moderna.</p>
+      <p><strong>Lanches Imperdíveis para Provar:</strong></p>
+      <ul>
+        <li><strong>Hotteok (호떡)</strong>: Panqueca de massa levemente elástica recheada de açúcar mascavo caramelizado quente, canela e sementes de girassol e abóbora tostadas. Delicioso e viciante!</li>
+        <li><strong>Gyeranppang (계란빵)</strong>: Pãozinho doce quentinho cozido no vapor e chapa com um ovo de galinha inteiro cozido por dentro. O equilíbrio doce e salgado perfeito.</li>
+        <li><strong>Tornado Potato</strong>: Batata inteira fatiada em formato de espiral fina em um espeto de madeira, frita na hora e polvilhada com tempero em pó à base de cebola, mel ou queijo.</li>
+        <li>Espetinhos de lula na chapa, queijo espetado grelhado na hora com leite condensado e mel, e pedaços de lagosta com queijo derretido no maçarico.</li>
+      </ul>
+      <p>A maioria das barraquinhas aceita dinheiro em espécie em Won coreano, cartões bancários de aproximação ou transferências fáceis por QR Code.</p>
+    </div>
+
+    <div id="d-food-bindaetteok">
+      <p>O <strong>Bindaetteok (빈대떡)</strong> é a clássica panqueca tradicional coreana de feijão mungo molhado moído em pedras tradicionais de moagem.</p>
+      <p>O creme de feijão mungo é temperado com kimchi azedo, brotos de feijão e cebolinha picada, e então frito em abundante óleo quente na chapa de ferro até adquirir uma coloração marrom dourada e uma textura incrivelmente crocante.</p>
+      <p>É servido em pedaços quentes acompanhados por um molho leve e ácido de soja e vinagre contendo pedaços de cebola fresca crua que quebra a oleosidade do frito perfeitamente.</p>
+    </div>
+
+    <div id="d-food-mayak">
+      <p>O <strong>Mayak Kimbap (마약김밥)</strong> é o lanche de rua de Seul por excelência. *Mayak* traduz-se literalmente como "narcótico" ou "viciante", devido à impossibilidade de parar de comer uma vez iniciado.</p>
+      <p>Consiste em pequenos rolinhos de arroz temperado envoltos em folhas de alga crocante contendo tiras finas de cenoura tostada, espinafre e nabo em conserva doce amarelo.</p>
+      <p>Eles são pincelados generosamente com óleo de gergelim tostado aromático e servidos com um molho especial leve à base de shoyu e mostarda amarela picante coreana. Uma opção salgada deliciosa e muito fácil de comer a qualquer hora pelos adolescentes!</p>
+    </div>
+
+    <div id="d-food-kalguksu">
+      <p>A sopa <strong>Kalguksu (칼국수)</strong> consiste em uma massa fresca de farinha de trigo esticada e cortada manualmente com uma faca pesada na hora, cozida em um rico caldo fumegante de anchovas desidratadas, vegetais frescos e mariscos ou frango desfiado.</p>
+      <p>Tem sabor caseiro reconfortante, textura de massa macia de alta qualidade e é acompanhada tradicionalmente por fartas porções de Kimchi fresco crocante feito no mesmo dia (*Geotjeori*).</p>
+      <p>No corredor do Gwangjang Market, as simpáticas tias cozinham em grandes panelas na sua frente enquanto você se esquiva do calor ou vento nos bancos de madeira ao redor.</p>
+    </div>
+
+    <div id="d-food-chimaek">
+      <p>O <strong>Chimaek (치맥)</strong> é o conceito gastronômico moderno mais famoso da Coreia do Sul: a junção de *Chicken* (frango frito) e *Maekju* (cerveja gelada para os adultos, ou refrigerantes gasosos doces para os adolescentes).</p>
+      <p>O frango frito coreano é caracterizado pela sua casca fina e extremamente crocante que permanece seca e sem gordura, mesmo quando coberta por molhos caramelizados espessos.</p>
+      <p><strong>Os Três Sabores Clássicos:</strong></p>
+      <ul>
+        <li>*Fried*: Versão original super crocante temperada com sal fino e pimenta preta.</li>
+        <li>*Yangnyeom*: Envolto em um molho espesso brilhante doce e levemente picante à base de pasta de pimenta Gochujang, alho e mel.</li>
+        <li>*Ganjang*: Coberto com molho à base de shoyu caramelizado de textura fina e muito alho frito.</li>
+      </ul>
+    </div>
+
+    <div id="d-food-bingsu">
+      <p>O <strong>Bingsu (빙수)</strong> é a sobremesa gelada clássica de verão mais querida na Coreia do Sul, ideal para combater o calor e a altíssima umidade de julho.</p>
+      <p>As raspas de gelo ultrafinas são feitas à base de leite condensado congelado raspado em máquinas especiais, gerando uma consistência idêntica a flocos de neve macios que derretem instantaneamente na boca.</p>
+      <p>A versão tradicional (*Patbingsu*) leva cobertura de feijão vermelho doce cozido (*pat*), bolinhos de arroz elásticos (*tteok*) e pó de grãos tostados aromáticos (*injeolmi*).</p>
+      <p>As versões contemporâneas deliciosas substituem o feijão por fartas porções de frutas tropicais frescas (morango ou manga doce fatiada) com sorvete de baunilha, calda de chocolate, pedaços de queijo cheesecake ou bolacha Oreo triturada. A rede nacional especializada **Sulbing** é o melhor local para provar em família!</p>
+    </div>
+
+    <div id="d-food-galbi">
+      <p>O <strong>Korean BBQ (Churrasco Coreano)</strong> é uma das maiores experiências gastronômicas interativas do mundo. Ao centro da mesa de madeira é instalada uma grelha circular com brasas de carvão ou aquecimento a gás.</p>
+      <p><strong>Os Cortes Principais:</strong></p>
+      <ul>
+        <li><strong>Galbi (갈비)</strong>: Nobres costelas bovinas marinadas por horas em um molho doce de soja, alho, gergelim e purê de pera coreana que amacia a carne de forma perfeita.</li>
+        <li><strong>Samgyeopsal (삼겹살)</strong>: Tiras espessas de barriga de porco grelhadas na chapa sem marinada, servidas crocantes.</li>
+      </ul>
+      <p><strong>O Ritual do Ssam (Trouxinha):</strong></p>
+      <p>Pegue uma folha verde de alface ou gergelim, deite um pedaço de carne assada quente sobre ela, adicione alho frito na grelha, kimchi quente e feche com uma colher de *Ssamjang* (uma pasta temperada de soja fermentada e pimenta). Dobre a folha fazendo um pequeno embrulho selado e coloque-o de uma só vez na boca! É a perfeita comunhão de frescor crocante, calor e riqueza de sabores.</p>
+    </div>
+
+    <div id="d-food-beondegi">
+      <p>O <strong>Beondegi (번데기)</strong> é uma comida de rua tradicional coreana bastante exótica, muito popular como lanche rápido salgado.</p>
+      <p>Consiste em pupas e larvas de bicho-da-seda fervidas e cozidas no vapor com temperos de sal e condimentos simples, servidas quentes em pequenos copos de papel descartáveis nos parques e mercados de rua.</p>
+      <p>Possui um aroma forte, terroso e singular muito característico. A textura externa é elástica e "estoura" de leve ao mastigar, revelando um miolo macio de sabor terroso que lembra nozes cozidas e castanhas tostadas. Os adolescentes vão adorar tirar fotos e brincar desafiando uns aos outros a experimentar essa delícia tradicional!</p>
+    </div>
+
+    <div id="d-food-bamdokkaebi">
+      <p>O <strong>Bamdokkaebi Night Market</strong> é um festival cultural e gastronômico noturno de Seul que se estende ao longo das margens do rio Hangang nos fins de semana quentes de verão (de sexta a domingo à noite).</p>
+      <p>O gramado à beira-rio enche-se de food trucks coloridos que preparam de forma dinâmica fusões de comida coreana e mundial (tacos de bulgogi, espetos de lagosta, churrascos e crepes artísticos).</p>
+      <p>Simultaneamente, jovens designers independentes locais exibem barraquinhas de brincos artesanais, quadros e perfumes. Shows independentes de música folk e K-pop ocorrem gratuitamente ao ar livre, em uma atmosfera festiva com brisa fresca ideal para fechar o final de semana.</p>
+    </div>
+
+    <!-- KPOP DETAILS -->
+    <div id="d-kpop-hongdae">
+      <p>Localizado ao redor da renomada Universidade de Artes Hongik, o bairro de <strong>Hongdae</strong> é o epicentro absoluto da juventude, arte urbana e música independente de Seul.</p>
+      <p><strong>Atrações Especiais para Adolescentes:</strong></p>
+      <ul>
+        <li><strong>Shows de Rua de K-pop (Busking):</strong> Todas as noites (com força total a partir das 18h00), a rua de pedestres *Hongdae Walking Street* é tomada por dezenas de círculos de apresentações de dança. Jovens dançarinos e estudantes coreanos realizam coreografias idênticas às dos clipes famosos de K-pop com sincronia perfeita e energia contagiante. É gratuito e maravilhoso assistir de perto!</li>
+        <li><strong>Lojas Megastores de K-pop:</strong> Bairro perfeito para comprar lightsticks oficiais, álbuns originais de grupos famosos e itens exclusivos em lojas gigantescas como a *WithMuu* (dentro do complexo AK Plaza) ou a *KTown4U*.</li>
+        <li><strong>Cabines de Fotos (Photo Booths):</strong> Lojas abertas e muito iluminadas repletas de cabines automáticas rápidas (Life Four Cuts, Photoism). Você escolhe acessórios fofos nas prateleiras gratuitas (óculos engraçados, tiaras de animais, perucas), entra na cabine com os amigos, tira fotos divertidas e elas são impressas em tiras coloridas na hora. Uma lembrança perfeita da viagem!</li>
+      </ul>
+    </div>
+
+    <div id="d-kpop-ikseon">
+      <p>O enclave de <strong>Ikseon-dong</strong> tornou-se o destino número um da juventude de Seul em busca de exploração visual, arquitetônica e doces sofisticados.</p>
+      <p>Os adolescentes adoram circular por Ikseon-dong por conta de suas pequenas confeitarias especializadas em *Soufflé Pancakes* gigantescos que tremem no prato, cafés com riachos internos artificiais de água limpa expostos e sorveterias em formato de peixinhos.</p>
+      <p>Além disso, o bairro abriga simpáticas lojas de roupas vintage super selecionadas de marcas asiáticas e acessórios de cabelo feitos de forma artesanal a preços muito acessíveis.</p>
+    </div>
+
+    <div id="d-kpop-seongsu">
+      <p>O distrito de <strong>Seongsu-dong</strong> é atualmente o polo mais descolado da vanguarda da moda urbana de Seul. A juventude coreana e internacional adora explorar Seongsu para descobrir as novas tendências de streetwear e design.</p>
+      <p><strong>As Pop-Up Stores Gratuitas:</strong></p>
+      <p>O bairro é famoso mundialmente por hospedar pop-ups temporárias fantásticas de marcas de grife, idols de K-pop e marcas de cosméticos. As instalações contam com cenários imersivos de alta tecnologia, exposições fotográficas e brindes exclusivos de entrada gratuita que atraem longas filas de jovens coreanos. Streetwear coreano sofisticado é a palavra de ordem nas vitrines.</p>
+    </div>
+
+    <div id="d-kpop-conveniencias">
+      <p>As lojas de conveniência coreanas (como CU e GS25) merecem uma visita diária apenas pelo divertido ritual de guloseimas adorado pelos adolescentes no Instagram e TikTok.</p>
+      <p><strong>O Roteiro de Lanches para os Jovens:</strong></p>
+      <ul>
+        <li>Pegue um copo plástico com gelo selado no freezer da loja e escolha um saquinho de refresco colorido sabor chá de pêssego ou limonada azul. Despeje e tome de canudinho sob o calor de julho!</li>
+        <li><strong>Faça seu Ramen na Máquina:</strong> Escolha um ramen instantâneo, fite o recipiente na máquina automática da loja. Em 3 minutos você tem um macarrão quente cozido perfeito, podendo adicionar queijo processado fatiado, ovos cozidos e salsichas compradas na conveniência.</li>
+        <li>Experimente o leite de banana Binggrae, doces com recheio macio em formatos fofos de patinhos ou ursinhos e salgadinhos divertidos coreanos de camarão ou batata doce.</li>
+      </ul>
+    </div>
+
+    <!-- COMPRAS DETAILS -->
+    <div id="d-compras-insadong">
+      <p>Se a ideia é comprar presentes com significado cultural profundo, cerâmicas elegantes de acabamento tradicional, leques pintados à mão e chás sofisticados, <strong>Insadong</strong> é o calçadão perfeito em Seul.</p>
+      <p><strong>O Complexo Ssamziegil:</strong></p>
+      <ul>
+        <li>Este inovador complexo de compras ao ar livre conta com uma rampa espiral ascendente contínua que sobe por 4 andares sem necessidade de degraus.</li>
+        <li>O local abriga mais de 70 pequenas lojas de designers e jovens artesãos independentes coreanos que vendem joias artesanais exclusivas, bolsas de tecido com bordados típicos, sabonetes orgânicos aromáticos e artigos refinados de papelaria em papel tradicional *Hanji*. É um passeio de compras muito agradável e diferenciado!</li>
+      </ul>
+    </div>
+
+    <div id="d-compras-skincare">
+      <p>A Coreia do Sul é o epicentro global da inovação em cuidados de beleza e pele (*K-Beauty*). O calçadão de <strong>Myeongdong</strong> concentra a maior densidade mundial de lojas deste segmento por metro quadrado.</p>
+      <p><strong>Onde Comprar:</strong></p>
+      <ul>
+        <li><strong>Olive Young:</strong> A monumental drogaria de beleza mais famosa da Coreia. É o paraíso definitivo do skincare: encontre protetores solares fluidos de textura aquosa invisível, séruns de mucina de caracol hidratantes, adesivos contra acne e máscaras faciais de hidratação.</li>
+        <li>Lojas próprias e gigantescas de marcas icônicas como Innisfree, Cosrx, Laneige e Nature Republic com decorações de plantas vivas fantásticas.</li>
+      </ul>
+      <div class="highlight-box">
+        💡 <strong>Reembolso de Impostos (Tax Free):</strong> Tenha seu passaporte físico original em mãos ao comprar nas grandes lojas de Myeongdong, pois a maioria oferece o desconto ou reembolso imediato do imposto no caixa no ato do pagamento! As funcionárias também oferecem fartas amostras grátis de cosméticos ao entrar ou comprar.
+      </div>
+    </div>
+
+    <div id="d-compras-moda">
+      <p>Para quem busca roupas e acessórios que expressem a autêntica estética de rua contemporânea de Seul, fuja dos shoppings tradicionais e explore os bairros criativos.</p>
+      <ul>
+        <li>Em <strong>Seongsu-dong</strong>, descubra elegantes boutiques de designers locais coreanos com alfaiatarias rústico-chiques descoladas e marcas de calçados de couro feitos sob medida com textura industrial única.</li>
+        <li>Em <strong>Hongdae</strong>, explore dezenas de lojas de vestuário e streetwear jovem muito baratas em ruelas centrais, além de brechós vintage super bem selecionados (*Vintage Curated*) contendo casacos retrô importados, jeans customizados e camisas de bandas.</li>
+      </ul>
+    </div>
+
+    <div id="d-compras-daiso">
+      <p>A <strong>Daiso</strong> coreana é uma verdadeira instituição nacional. Longe de ser uma simples loja de utilidades baratas genérica, ela surpreende pela excelente qualidade de design e utilidade de seus produtos.</p>
+      <p>A mega loja localizada em Myeongdong conta com **12 andares gigantescos** organizados por setores.</p>
+      <p><strong>O que Comprar com Economia:</strong></p>
+      <ul>
+        <li>Artigos de papelaria incrivelmente fofos (adesivos decorativos, canetas gel de escrita fina, blocos de notas coloridos).</li>
+        <li>Práticos organizadores de mala de viagem e nécessaires de viagem de excelente costura.</li>
+        <li>Acessórios úteis de cozinha e decoração de design minimalista.</li>
+        <li>Doces, ramens e salgadinhos coreanos em pacotes econômicos ideais para levar em grande quantidade de presente para os amigos no Brasil. A maioria dos itens custa entre ₩1.000, ₩2.000 e ₩5.000.</li>
+      </ul>
+    </div>
+
+    <div id="d-compras-conveniencias">
+      <p>Uma parada rápida na CU ou GS25 garante deliciosos lanches rápidos para a família durante as longas caminhadas de turismo sob o sol. Compre garrafinhas de água, sucos e picolés refrescantes de sabores locais como melão, matcha e feijão doce para manter o fôlego da família durante as longas caminhadas pelas calçadas históricas de Seul!</p>
+    </div>
+
+  </div>
+
+  <!-- JAVASCRIPT MODERNO E CLEAN -->
+  <script>
+    // Função de Controle de Abas
+    function show(panelId, tabButton) {
+      // Ocultar todos os paineis
+      const panels = document.querySelectorAll('.panel');
+      panels.forEach(panel => panel.classList.remove('active'));
+      
+      // Desativar todas as abas
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      
+      // Mostrar o painel alvo
+      const targetPanel = document.getElementById(panelId);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+      
+      // Ativar o botão da aba atual
+      if (tabButton) {
+        tabButton.classList.add('active');
+        // Rolagem automática suave das abas para manter a selecionada visível no mobile
+        tabButton.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    }
+
+    // Controle de Abertura do Modal Bottom-Sheet Dinâmico
+    function openModal(detailsId, title, emoji) {
+      const detailsElement = document.getElementById(detailsId);
+      if (!detailsElement) return;
+
+      const contentHtml = detailsElement.innerHTML;
+      document.getElementById('modal-title-text').innerHTML = emoji + ' &nbsp;' + title;
+      document.getElementById('modal-body-content').innerHTML = contentHtml;
+      
+      // Ativar imagens internas do modal para carregamento correto se houver
+      const modalImages = document.getElementById('modal-body-content').querySelectorAll('img');
+      modalImages.forEach(img => {
+        img.onload = function() { this.classList.add('loaded'); };
+        // se já carregou antes
+        if (img.complete) {
+          img.classList.add('loaded');
+        }
+      });
+
+      const overlay = document.getElementById('modal-overlay');
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden'; // Impede rolagem do fundo
+    }
+
+    // Fechamento do Modal
+    function closeModal() {
+      const overlay = document.getElementById('modal-overlay');
+      overlay.classList.remove('open');
+      document.body.style.overflow = ''; // Restaura rolagem do fundo
+    }
+
+    // Fechar ao clicar fora do Modal Box (Overlay)
+    function handleOverlayClick(event) {
+      if (event.target.id === 'modal-overlay') {
+        closeModal();
+      }
+    }
+
+    // Fechar com a tecla Esc
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    // Lógica para adicionar classe loaded em imagens normais após carregamento completo
+    document.addEventListener('DOMContentLoaded', function() {
+      const imgs = document.querySelectorAll('.card-img img, .food-card-img img');
+      imgs.forEach(img => {
+        img.addEventListener('load', function() {
+          this.classList.add('loaded');
+        });
+        // Caso a imagem já tenha carregado do cache do navegador
+        if (img.complete) {
+          img.classList.add('loaded');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
