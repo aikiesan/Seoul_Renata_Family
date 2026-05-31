@@ -27,28 +27,25 @@
       min-height: 100vh;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
-      padding-bottom: 2rem;
+      padding-bottom: 5rem; /* Espaço para o botão flutuante no rodapé */
     }
     
-    /* Cabeçalho Fixo Premium */
+    /* Cabeçalho Limpo Não-Fixo (Evita poluição vertical) */
     .header-wrapper {
       background-color: #FFFFFF;
       border-bottom: 1px solid #E8E7E2;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      padding-top: 1.25rem;
-      padding-bottom: 0rem;
+      padding: 1.5rem 0 1.25rem 0;
+      margin-bottom: 1rem;
     }
     
     .header {
       max-width: 680px;
       margin: 0 auto;
-      padding: 0 1rem 0.75rem 1rem;
+      padding: 0 1rem;
     }
     
     .header h1 {
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 700;
       color: #1A1A1A;
       display: flex;
@@ -57,65 +54,82 @@
     }
     
     .header p {
-      font-size: 12.5px;
+      font-size: 13px;
       color: #5C5C5C;
       margin-top: 4px;
-      line-height: 1.5;
+      line-height: 1.55;
     }
     
-    /* Abas com Scroll Horizontal Suave */
-    .tabs-outer {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 0 1rem;
-      overflow-x: auto;
-      scrollbar-width: none; /* Firefox */
-      -ms-overflow-style: none; /* IE */
+    /* Dashboard de Categorias (Grade no topo) */
+    .category-dashboard {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 1.5rem;
     }
     
-    .tabs-outer::-webkit-scrollbar {
-      display: none; /* Chrome/Safari */
+    @media (max-width: 600px) {
+      .category-dashboard {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
     }
     
-    .tabs {
-      display: flex;
-      gap: 6px;
-      padding: 6px 0 12px 0;
-      width: max-content;
-    }
-    
-    .tab {
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 12.5px;
-      font-weight: 500;
-      border: 1px solid #D0CFC9;
-      cursor: pointer;
+    .category-tile {
       background-color: #FFFFFF;
-      color: #5C5C5C;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      font-family: inherit;
-      white-space: nowrap;
+      border: 1px solid #E8E7E2;
+      border-radius: 12px;
+      padding: 0.85rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
     
-    .tab:hover {
-      background-color: #EFEFED;
-      border-color: #A09E95;
-      color: #1A1A1A;
-    }
-    
-    .tab.active {
-      background-color: #E8614A;
-      color: #FFFFFF;
+    .category-tile:hover {
+      transform: translateY(-2px);
       border-color: #E8614A;
-      box-shadow: 0 4px 10px rgba(232, 97, 74, 0.15);
+      box-shadow: 0 6px 16px rgba(232, 97, 74, 0.04);
+    }
+    
+    /* Estado Ativo: Anel coral de destaque super premium */
+    .category-tile.active {
+      border-color: #E8614A;
+      background-color: #FFFFFF;
+      box-shadow: 0 0 0 2px #E8614A, 0 6px 16px rgba(232, 97, 74, 0.1);
+    }
+    
+    .category-tile.active .tile-title {
+      color: #E8614A;
+    }
+    
+    .tile-emoji {
+      font-size: 26px;
+      margin-bottom: 4px;
+      user-select: none;
+    }
+    
+    .tile-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1A1A1A;
+      transition: color 0.2s;
+    }
+    
+    .tile-desc {
+      font-size: 9.5px;
+      color: #5C5C5C;
+      margin-top: 2px;
+      line-height: 1.2;
     }
     
     /* Layout dos Paineis de Conteúdo */
     .guide {
       max-width: 680px;
       margin: 0 auto;
-      padding: 1.25rem 1rem 3rem 1rem;
+      padding: 0.5rem 1rem 3rem 1rem;
     }
     
     .panel {
@@ -441,6 +455,101 @@
       line-height: 1.5;
     }
     
+    /* BOTÃO FLUTUANTE DE NAVEGAÇÃO / MENU MÓVEL */
+    .floating-nav-container {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px); /* Oculto inicialmente */
+      z-index: 900;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .floating-nav-container.visible {
+      transform: translateX(-50%) translateY(0);
+    }
+    
+    .floating-nav-btn {
+      background-color: #1A1A1A;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 13.5px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: inherit;
+    }
+    
+    .floating-nav-btn:hover {
+      background-color: #E8614A;
+      transform: scale(1.05);
+    }
+    
+    .floating-nav-btn:active {
+      transform: scale(0.95);
+    }
+    
+    /* LISTA DE MENU DO EXPLORAR */
+    .menu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .menu-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.65rem 0.85rem;
+      background-color: #F6F5F3;
+      border: 1px solid #E8E7E2;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .menu-item:hover {
+      border-color: #E8614A;
+      background-color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(232, 97, 74, 0.05);
+    }
+    
+    .menu-item-emoji {
+      font-size: 22px;
+      width: 38px;
+      height: 38px;
+      background-color: #FFFFFF;
+      border: 1px solid #E8E7E2;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .menu-item-info {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .menu-item-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1A1A1A;
+    }
+    
+    .menu-item-desc {
+      font-size: 11px;
+      color: #5C5C5C;
+      margin-top: 1px;
+    }
+    
     /* MODAL BOTTOM-SHEET RESPONSIVO */
     .modal-overlay {
       position: fixed;
@@ -594,30 +703,60 @@
 </head>
 <body>
 
-  <!-- CABEÇALHO FIXO -->
+  <!-- CABEÇALHO LIMPO -->
   <div class="header-wrapper">
     <div class="header">
       <h1>🇰🇷 Seul 2026</h1>
       <p>O guia de viagem definitivo para a Renata e família de 4 pessoas em julho de 2026. Roteiro testado, indicações locais autênticas e experiências sob medida.</p>
     </div>
-    
-    <!-- ABA DE NAVEGAÇÃO -->
-    <div class="tabs-outer">
-      <div class="tabs">
-        <button class="tab active" onclick="show('logistica', this)">Logística</button>
-        <button class="tab" onclick="show('cultural', this)">Cultural</button>
-        <button class="tab" onclick="show('famosos', this)">Locais Famosos</button>
-        <button class="tab" onclick="show('experiencias', this)">Experiências Coreanas</button>
-        <button class="tab" onclick="show('pop', this)">Locais Pop</button>
-        <button class="tab" onclick="show('comida', this)">Comida</button>
-        <button class="tab" onclick="show('kpop', this)">K-pop &amp; Jovens</button>
-        <button class="tab" onclick="show('compras', this)">Compras</button>
-      </div>
-    </div>
   </div>
 
   <!-- CONTEÚDO PRINCIPAL -->
   <div class="guide">
+    
+    <!-- DASHBOARD DE NAVEGAÇÃO POR CATEGORIAS (TOP-TIER MOBILE UX) -->
+    <div class="category-dashboard">
+      <div class="category-tile active" data-id="logistica" onclick="selectCategory('logistica', this)">
+        <span class="tile-emoji">🚇</span>
+        <span class="tile-title">Logística</span>
+        <span class="tile-desc">Transportes &amp; Clima</span>
+      </div>
+      <div class="category-tile" data-id="cultural" onclick="selectCategory('cultural', this)">
+        <span class="tile-emoji">🏯</span>
+        <span class="tile-title">Cultural</span>
+        <span class="tile-desc">Palácios &amp; Tradição</span>
+      </div>
+      <div class="category-tile" data-id="famosos" onclick="selectCategory('famosos', this)">
+        <span class="tile-emoji">🗼</span>
+        <span class="tile-title">Locais Famosos</span>
+        <span class="tile-desc">Vistas &amp; Pontos Históricos</span>
+      </div>
+      <div class="category-tile" data-id="experiencias" onclick="selectCategory('experiencias', this)">
+        <span class="tile-emoji">🏞️</span>
+        <span class="tile-title">Experiências</span>
+        <span class="tile-desc">Mercados &amp; Lazer no Rio</span>
+      </div>
+      <div class="category-tile" data-id="pop" onclick="selectCategory('pop', this)">
+        <span class="tile-emoji">✨</span>
+        <span class="tile-title">Locais Pop</span>
+        <span class="tile-desc">Bairros de Moda &amp; Ateliês</span>
+      </div>
+      <div class="category-tile" data-id="comida" onclick="selectCategory('comida', this)">
+        <span class="tile-emoji">🥞</span>
+        <span class="tile-title">Comida</span>
+        <span class="tile-desc">Culinária &amp; Bebidas</span>
+      </div>
+      <div class="category-tile" data-id="kpop" onclick="selectCategory('kpop', this)">
+        <span class="tile-emoji">🎤</span>
+        <span class="tile-title">K-pop &amp; Jovens</span>
+        <span class="tile-desc">Shows de Rua &amp; Pop-ups</span>
+      </div>
+      <div class="category-tile" data-id="compras" onclick="selectCategory('compras', this)">
+        <span class="tile-emoji">🛍️</span>
+        <span class="tile-title">Compras</span>
+        <span class="tile-desc">Skincare K-beauty &amp; Daiso</span>
+      </div>
+    </div>
 
     <!-- LOGÍSTICA -->
     <div class="panel active" id="logistica">
@@ -810,7 +949,7 @@
                 <div class="card-sub">Córrego revitalizado no coração da metrópole</div>
               </div>
             </div>
-            <div class="card-body">Um oásis verdejante de 3 km abaixo do nível da rua. Graças à água corrente e pontes, caminhar por aqui é incrivelmente fresco e agradável in julho.</div>
+            <div class="card-body">Um oásis verdejante de 3 km abaixo do nível da rua. Graças à água corrente e pontes, caminhar por aqui é incrivelmente fresco e agradável em julho.</div>
             <div class="card-tags">
               <span class="tag tag-free">gratuito</span>
               <span class="tag tag-local">refúgio urbano</span>
@@ -1135,13 +1274,13 @@
           </div>
         </div>
 
-        <div class="food-card" onclick="openModal('d-food-tteokbokki', 'Tteokbokki (떡볶i)', '🌶️')">
+        <div class="food-card" onclick="openModal('d-food-tteokbokki', 'Tteokbokki (떡볶이)', '🌶️')">
           <div class="food-card-img">
             <span class="fallback-emoji">🌶️</span>
             <img src="R00397-Hot-Spicy-Tteokbokki.jpg" alt="Tteokbokki Apimentado" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
           </div>
           <div class="food-card-info">
-            <div class="food-card-title">Tteokbokki (Bolinhos de Arroz Apimentados) — 떡볶이 ⚠️</div>
+            <div class="food-card-title">Tteokbokki (Bolinhos de Arroz Apimentados) — 떡볶i ⚠️</div>
             <div class="food-card-desc">Bolinhos cilíndricos de arroz elásticos cozidos em um molho espesso vermelho, doce e <strong>muito apimentado</strong>. Um clássico de rua muito amado pelos jovens!</div>
           </div>
         </div>
@@ -1175,7 +1314,7 @@
           </div>
           <div class="food-card-info">
             <div class="food-card-title">Bindaetteok (Panqueca de Feijão Mungo) — 빈대떡</div>
-            <div class="food-card-desc">Frita em óleo abundante até ficar extremamente crocante por fora e macia por dentro. A conclusão perfeita para o Dia Cultural.</div>
+            <div class="food-card-desc">Frita em óleo abundante até ficar extremamente crocante por fora e macia por dentro. A conclusão perfeita para o Roteiro Cultural.</div>
           </div>
         </div>
 
@@ -1212,7 +1351,7 @@
           </div>
         </div>
 
-        <div class="food-card" onclick="openModal('d-food-bingsu', 'Bingsu (빙su)', '🍧')">
+        <div class="food-card" onclick="openModal('d-food-bingsu', 'Bingsu (빙수)', '🍧')">
           <div class="food-card-img">
             <span class="fallback-emoji">🍧</span>
             <img src="bingsu.jpg" alt="Bingsu" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
@@ -1465,6 +1604,14 @@
 
   </div>
 
+  <!-- BOTÃO FLUTUANTE DE NAVEGAÇÃO / MENU MÓVEL -->
+  <div class="floating-nav-container" id="floating-nav-container">
+    <button class="floating-nav-btn" onclick="openModal('d-explore-menu', 'Selecione uma Categoria', '🧭')">
+      <span>🧭</span>
+      <span>Explorar</span>
+    </button>
+  </div>
+
   <!-- MODAL BOTTOM-SHEET ÚNICO E DINÂMICO -->
   <div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
     <div class="modal-box">
@@ -1481,6 +1628,68 @@
 
   <!-- CONTEÚDO EXPANDIDO DAS EXPERIÊNCIAS (OCULTO EM DISPLAY NONE) -->
   <div style="display: none;">
+
+    <!-- explore menu bottom sheet options -->
+    <div id="d-explore-menu">
+      <div class="menu-list">
+        <div class="menu-item" onclick="selectCategoryFromMenu('logistica')">
+          <span class="menu-item-emoji">🚇</span>
+          <div class="menu-item-info">
+            <span class="menu-item-title">Logística</span>
+            <span class="menu-item-desc">T-Money, transporte BRT, metrô, clima e apps</span>
+          </div>
+        </div>
+        <div class="menu-item" onclick="selectCategoryFromMenu('cultural')">
+          <span class="menu-item-emoji">🏯</span>
+          <div class="menu-item-info">
+            <span class="menu-item-title">Cultural</span>
+            <span class="menu-item-desc">Palácios, aluguel de Hanbok, Bukchon e Gwangjang</span>
+          </div>
+        </div>
+        <div class="menu-item" onclick="selectCategoryFromMenu('famosos')">
+          <span class="menu-item-emoji">🗼</span>
+          <div class="menu-item-info">
+            <span class="menu-item-title">Locais Famosos</span>
+            <span class="menu-item-desc">Namsan Tower, Itaewon, Jardim Secreto</span>
+          </div>
+        </div>
+        <div class="menu-item" onclick="selectCategoryFromMenu('experiencias')">
+          <span class="menu-item-emoji">🏞️</span>
+          <div class="menu-item-info">
+            <span class="menu-item-title">Experiências Coreanas</span>
+            <span class="menu-item-desc">Mercado Mangwon, Rio Hangang piquenique, Noryangjin</span>
+          </div>
+        </div>
+        <div class="menu-item" onclick="selectCategoryFromMenu('pop')">
+          <span class="menu-item-emoji">✨</span>
+          <div class="menu-item-info">
+            <span class="menu-item-title">Locais Pop</span>
+            <span class="menu-item-desc">Seongsu-dong, Ikseon-dong, Lotte World Tower</span>
+          </div>
+        </div>
+        <div class="menu-item" onclick="selectCategoryFromMenu('comida')">
+          <span class="menu-item-emoji">🥞</span>
+          <div class="menu-item-info">
+            <span class="menu-item-title">Comida &amp; Culinária</span>
+            <span class="menu-item-desc">Naengmyeon, Milkis, Kimchi Jjigae, churrasco, pimenta</span>
+          </div>
+        </div>
+        <div class="menu-item" onclick="selectCategoryFromMenu('kpop')">
+          <span class="menu-item-emoji">🎤</span>
+          <div class="menu-item-info">
+            <span class="menu-item-title">K-pop &amp; Jovens</span>
+            <span class="menu-item-desc">Hongdae busking, conveniências, energético Bacchus</span>
+          </div>
+        </div>
+        <div class="menu-item" onclick="selectCategoryFromMenu('compras')">
+          <span class="menu-item-emoji">🛍️</span>
+          <div class="menu-item-info">
+            <span class="menu-item-title">Compras</span>
+            <span class="menu-item-desc">Skincare K-beauty, Insadong, Daiso gigante</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- LOGISTICA DETAILS -->
     <div id="d-tmoney">
@@ -1580,7 +1789,7 @@
       <p><strong>As Joias Gastronômicas do Mercado:</strong></p>
       <ul>
         <li><strong>Bindaetteok (빈대떡)</strong>: Panqueca frita de feijão mungo moído em moinhos de pedra com cebolinha, kimchi e brotos. Crocante por fora e servida com molho de soja e pedaços de cebola ácida.</li>
-        <li><strong>Mayak Kimbap (마약김밥)</strong>: Mini rolinhos finos de arroz temperado com cenoura, espinafre e nabo cozido em alga crocante. Acompanha o viciante molho de shoyu e mostarda amarela coreana picante.</li>
+        <li><strong>Mayak Kimbap (마약김밥)</strong>: Mini rolinhos finos de arroz temperado com cenoura, espinafre e nabo em conserva doce amarelo. Acompanha o viciante molho de shoyu e mostarda amarela coreana picante.</li>
         <li><strong>Kalguksu (칼국수)</strong>: Macarrão artesanal cortado à faca cozido em caldo quente rico e caseiro de anchovas e legumes na sua frente pelas simpáticas tias.</li>
       </ul>
       <div class="warn-box">
@@ -1683,7 +1892,7 @@
     </div>
 
     <div id="d-ikseon">
-      <p>O bairro de <strong>Ikseon-dong Hanok Village</strong> é um dos enclaves comerciais mais charmosos e pitorescos de Seul, fundado originalmente in 1920 como um conjunto habitacional residencial acessível de casas tradicionais (*Hanok*).</p>
+      <p>O bairro de <strong>Ikseon-dong Hanok Village</strong> é um dos enclaves comerciais mais charmosos e pitorescos de Seul, fundado originalmente em 1920 como um conjunto habitacional residencial acessível de casas tradicionais (*Hanok*).</p>
       <p>Diferente de Bukchon, as casas Hanoks de Ikseon-dong foram inteiramente convertidas no nível térreo em comércios boutiques e confeitarias conceituais fantásticas.</p>
       <p><strong>Destaques do Bairro:</strong></p>
       <ul>
@@ -1796,8 +2005,14 @@
     <div id="d-food-bingsu">
       <p>O <strong>Bingsu (빙수)</strong> é a sobremesa gelada clássica de verão mais querida na Coreia do Sul, ideal para combater o calor e a altíssima umidade de julho.</p>
       <p>As raspas de gelo ultrafinas são feitas à base de leite condensado congelado raspado em máquinas especiais, gerando uma consistência idêntica a flocos de neve macios que derretem instantaneamente na boca.</p>
-      <p>A versão tradicional (*Patbingsu*) leva cobertura de feijão vermelho doce cozido (*pat*), bolinhos de arroz elásticos (*tteok*) e pó de grãos tostados aromáticos (*injeolmi*).</p>
+      <p>A versão tradicional (*Patbingsu*) leva cobertura de feijão vermelho doce (*pat*), bolinhos de arroz elásticos (*tteok*) e pó de grãos tostados aromáticos (*injeolmi*).</p>
       <p>As versões contemporâneas deliciosas substituem o feijão por fartas porções de frutas tropicais frescas (morango ou manga doce fatiada) com sorvete de baunilha, calda de chocolate, pedaços de queijo cheesecake ou bolacha Oreo triturada. A rede nacional especializada **Sulbing** é o melhor local para provar em família!</p>
+    </div>
+
+    <div id="d-food-beondegi">
+      <p>O <strong>Beondegi (번데기)</strong> é uma comida de rua tradicional coreana bastante exótica, muito popular como lanche rápido salgado.</p>
+      <p>Consiste em pupas e larvas de bicho-da-seda fervidas e cozidas no vapor com temperos de sal e condimentos simples, servidas quentes em pequenos copos de papel descartáveis nos parques e mercados de rua.</p>
+      <p>Possui um aroma forte, terroso e singular muito característico. A textura externa é elástica e "estoura" de leve ao mastigar, revelando um miolo macio de sabor terroso que lembra nozes cozidas e castanhas tostadas. Os adolescentes vão adorar tirar fotos e brincar desafiando uns aos outros a experimentar essa delícia tradicional!</p>
     </div>
 
     <!-- KPOP DETAILS & BACCHUS -->
@@ -1838,7 +2053,7 @@
     </div>
 
     <div id="d-kpop-conveniencias">
-      <p>As lojas de conveniência coreanas (como CU e GS25) merecem uma visita diária apenas pelo divertido ritual de guloseimas adorado pelos adolescentes no Instagram e TikTok.</p>
+      <p>As lojas de conveniência coreanas (como CU e GS25) merecen uma visita diária apenas pelo divertido ritual de guloseimas adorado pelos adolescentes no Instagram e TikTok.</p>
       <p><strong>O Roteiro de Lanches para os Jovens:</strong></p>
       <ul>
         <li>Pegue um copo plástico com gelo selado no freezer da loja e escolha um saquinho de refresco sabor chá de pêssego ou limonada azul. Despeje e tome de canudinho sob o calor de julho!</li>
@@ -1897,28 +2112,48 @@
 
   <!-- JAVASCRIPT MODERNO E CLEAN -->
   <script>
-    // Função de Controle de Abas
-    function show(panelId, tabButton) {
-      // Ocultar todos os paineis
+    // Função de Controle de Abas Principal (Com dashboard de categorias)
+    function selectCategory(panelId, tileButton) {
+      // Ocultar todos os paineis de conteúdo
       const panels = document.querySelectorAll('.panel');
       panels.forEach(panel => panel.classList.remove('active'));
       
-      // Desativar todas as abas
-      const tabs = document.querySelectorAll('.tab');
-      tabs.forEach(tab => tab.classList.remove('active'));
+      // Desativar todas as tiles do dashboard
+      const tiles = document.querySelectorAll('.category-tile');
+      tiles.forEach(tile => tile.classList.remove('active'));
       
-      // Mostrar o painel alvo
+      // Mostrar o painel correspondente
       const targetPanel = document.getElementById(panelId);
       if (targetPanel) {
         targetPanel.classList.add('active');
       }
       
-      // Ativar o botão da aba atual
-      if (tabButton) {
-        tabButton.classList.add('active');
-        // Rolagem automática suave das abas para manter a selecionada visível no mobile
-        tabButton.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      // Ativar o botão / tile clicado
+      if (tileButton) {
+        tileButton.classList.add('active');
+      } else {
+        // Caso a seleção tenha vindo do menu flutuante, encontra e ativa o card do topo
+        const matchingTile = document.querySelector(`.category-tile[data-id="${panelId}"]`);
+        if (matchingTile) {
+          matchingTile.classList.add('active');
+        }
       }
+      
+      // Rolagem suave para o painel selecionado (com leve respiro no topo)
+      if (targetPanel) {
+        const yOffset = -25;
+        const y = targetPanel.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+
+    // Seleção de Categoria a partir do Menu Bottom-sheet
+    function selectCategoryFromMenu(panelId) {
+      closeModal(); // Fecha o menu flutuante deslizante
+      // Executa a seleção e rola para a categoria selecionada
+      setTimeout(() => {
+        selectCategory(panelId);
+      }, 100);
     }
 
     // Controle de Abertura do Modal Bottom-Sheet Dinâmico
@@ -1978,6 +2213,16 @@
           img.classList.add('loaded');
         }
       });
+    });
+
+    // Mostrar ou ocultar o botão flutuante 'Explorar' de acordo com a rolagem
+    window.addEventListener('scroll', function() {
+      const floatingBtn = document.getElementById('floating-nav-container');
+      if (window.scrollY > 220) {
+        floatingBtn.classList.add('visible');
+      } else {
+        floatingBtn.classList.remove('visible');
+      }
     });
   </script>
 </body>
