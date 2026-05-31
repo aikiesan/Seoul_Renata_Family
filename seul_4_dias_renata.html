@@ -1,0 +1,456 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans, sans-serif); }
+  .guide { padding: 1.5rem 0; max-width: 680px; }
+  .header { margin-bottom: 1.5rem; }
+  .header h1 { font-size: 20px; font-weight: 500; color: var(--color-text-primary); }
+  .header p { font-size: 13px; color: var(--color-text-secondary); margin-top: 4px; line-height: 1.5; }
+
+  .tabs { display: flex; gap: 6px; margin-bottom: 1.25rem; flex-wrap: wrap; }
+  .tab { padding: 6px 14px; border-radius: 20px; font-size: 13px; border: 0.5px solid var(--color-border-secondary); cursor: pointer; background: transparent; color: var(--color-text-secondary); transition: all 0.15s; }
+  .tab:hover { background: var(--color-background-secondary); }
+  .tab.active { background: var(--color-text-primary); color: var(--color-background-primary); border-color: var(--color-text-primary); }
+
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text-tertiary); margin: 1.25rem 0 0.6rem; }
+
+  .card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; margin-bottom: 10px; }
+  .card:hover { border-color: var(--color-border-secondary); }
+
+  .card-head { display: flex; align-items: flex-start; gap: 10px; }
+  .icon-box { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 17px; }
+  .ib-teal { background: #E1F5EE; }
+  .ib-amber { background: #FAEEDA; }
+  .ib-blue { background: #E6F1FB; }
+  .ib-coral { background: #FAECE7; }
+  .ib-purple { background: #EEEDFE; }
+  .ib-green { background: #EAF3DE; }
+
+  .card-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); line-height: 1.3; }
+  .card-sub { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; }
+  .card-body { font-size: 13px; color: var(--color-text-secondary); margin-top: 10px; line-height: 1.65; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; margin-top: 8px; margin-right: 4px; }
+  .tag-free { background: #EAF3DE; color: #3B6D11; }
+  .tag-tip { background: #FAEEDA; color: #854F0B; }
+  .tag-food { background: #FAECE7; color: #993C1D; }
+  .tag-transport { background: #E6F1FB; color: #185FA5; }
+  .tag-local { background: #EEEDFE; color: #534AB7; }
+  .tag-night { background: #2C2C2A; color: #D3D1C7; }
+
+  .highlight-box { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 0.85rem 1rem; margin-top: 10px; font-size: 12.5px; color: var(--color-text-secondary); line-height: 1.6; border-left: 2.5px solid #1D9E75; }
+
+  .warn-box { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 0.85rem 1rem; margin-top: 10px; font-size: 12.5px; color: var(--color-text-secondary); line-height: 1.6; border-left: 2.5px solid #EF9F27; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 480px) { .grid2 { grid-template-columns: 1fr; } }
+
+  .mini-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 0.75rem 1rem; }
+  .mini-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+  .mini-body { font-size: 12px; color: var(--color-text-secondary); margin-top: 4px; line-height: 1.55; }
+
+  .food-item { display: flex; align-items: flex-start; gap: 8px; padding: 8px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .food-item:last-child { border-bottom: none; }
+  .food-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+  .food-desc { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; line-height: 1.5; }
+  .food-emoji { font-size: 20px; flex-shrink: 0; }
+</style>
+
+<div class="guide">
+  <div class="header">
+    <h1>🇰🇷 4 dias em Seul — Guia para a Renata</h1>
+    <p>Roteiro com indicações de quem conhece a cidade de verdade: transporte local, comida de rua autêntica e experiências fora do circuito turístico padrão. Julho de 2026.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="show('logistica')">Logística</button>
+    <button class="tab" onclick="show('dia1')">Dia 1</button>
+    <button class="tab" onclick="show('dia2')">Dia 2</button>
+    <button class="tab" onclick="show('dia3')">Dia 3</button>
+    <button class="tab" onclick="show('dia4')">Dia 4</button>
+    <button class="tab" onclick="show('comida')">Comida</button>
+    <button class="tab" onclick="show('compras')">Compras</button>
+  </div>
+
+  <!-- LOGÍSTICA -->
+  <div class="panel active" id="logistica">
+    <p class="section-label">Essenciais antes de sair do aeroporto</p>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="icon-box ib-blue">🚇</div>
+        <div>
+          <div class="card-title">T-Money Card</div>
+          <div class="card-sub">Cartão de transporte recarregável — metrô, ônibus e táxi</div>
+        </div>
+      </div>
+      <div class="card-body">Comprar logo na chegada no aeroporto (Incheon ou Gimpo) nas máquinas de metrô ou lojas de conveniência (GS25, CU, 7-Eleven). Funciona em todo o sistema de transporte de Seul e cidades vizinhas. Permite pegar metrô + ônibus com integração tarifária — muito mais barato que comprar bilhetes avulsos.</div>
+      <span class="tag tag-transport">metrô</span>
+      <span class="tag tag-transport">ônibus</span>
+      <span class="tag tag-tip">recarregar nas máquinas do metrô ou conveniências</span>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="icon-box ib-teal">📱</div>
+        <div>
+          <div class="card-title">Apps essenciais</div>
+          <div class="card-sub">Instalar antes de embarcar</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <strong style="font-weight:500">KakaoMaps</strong> — o Google Maps coreano. Mais preciso para transporte público e pontos locais. Muitos estabelecimentos não aparecem no Google Maps. Tem versão em inglês.<br><br>
+        <strong style="font-weight:500">KakaoTaxi</strong> — equivalente ao 99 ou Uber. Paga pelo app (cartão) ou dinheiro. Muito confiável e sem barreira de idioma. Essencial para voltar de noite dos mercados.
+      </div>
+      <span class="tag tag-tip">KakaoMaps ≠ Google Maps — mais preciso em Seul</span>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="icon-box ib-amber">🌡️</div>
+        <div>
+          <div class="card-title">Julho em Seul — calor e chuva</div>
+          <div class="card-sub">Final de julho é período de monção (jangma)</div>
+        </div>
+      </div>
+      <div class="card-body">Temperaturas entre 28–35°C com alta umidade. Chuvas podem ser intensas mas rápidas. Levar guarda-chuva compacto. Muitos locais têm ar-condicionado potente (às vezes frio demais). A subida do Namsan à tarde exige hidratação — comprar água nas lojas de conveniência na base (muito barato). Roupas leves e tênis confortável são indispensáveis.</div>
+      <div class="warn-box">⚠️ Julho é temporada de alta. Reservar hospedagem com antecedência e checar horários dos eventos com antecedência. Os tours noturnos do Gyeongbokgung (Starlight Tour) terminam em junho — não estarão disponíveis em julho.</div>
+    </div>
+
+    <p class="section-label">Dinheiro e pagamentos</p>
+    <div class="grid2">
+      <div class="mini-card">
+        <div class="mini-title">💵 Dinheiro em espécie</div>
+        <div class="mini-body">Mercados de rua e feirantes aceitam principalmente dinheiro. Sacar won coreano (KRW) nos caixas eletrônicos do aeroporto ou bancos. Câmbio físico na Myeongdong ou Dongdaemun costuma ter taxas melhores.</div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-title">💳 Cartão de crédito</div>
+        <div class="mini-body">Restaurantes, lojas e metrô aceitam cartão. Mastercard e Visa amplamente aceitos. Avisar o banco antes de viajar para evitar bloqueio.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIA 1 -->
+  <div class="panel" id="dia1">
+    <p class="section-label">Dia 1 — Palácio, Hanok e Cheonggyecheon</p>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="icon-box ib-teal">🏯</div>
+        <div>
+          <div class="card-title">Gyeongbokgung Palace — manhã</div>
+          <div class="card-sub">Palácio principal da Dinastia Joseon — centro histórico</div>
+        </div>
+      </div>
+      <div class="card-body">Chegar cedo (abertura às 9h) para evitar o calor do meio-dia e as filas. A troca da guarda acontece às 10h e às 14h na entrada principal (Gwanghwamun Gate). Vale muito assistir — é gratuita e dura cerca de 20 minutos com cerimônia completa.<br><br>Aluguel de Hanbok nos arredores do palácio: quem usar o traje tradicional entra <strong style="font-weight:500">de graça</strong>. Há várias lojas de aluguel nas ruelas próximas ao portão sul (cerca de 10.000–15.000 won por 2 horas). As fotos dentro do palácio vestindo Hanbok são lindas.</div>
+      <span class="tag tag-free">entrada ₩3.000</span>
+      <span class="tag tag-free">gratuito com Hanbok</span>
+      <span class="tag tag-tip">Troca da guarda: 10h e 14h</span>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="icon-box ib-purple">🏘️</div>
+        <div>
+          <div class="card-title">Bukchon Hanok Village — tarde cedo</div>
+          <div class="card-sub">Bairro tradicional de casas Hanok — 5 min a pé do palácio</div>
+        </div>
+      </div>
+      <div class="card-body">Conjunto de casas tradicionais coreanas preservadas em colina com vista da cidade moderna. As ruelas são estreitas e fotográficas. Ponto mais famoso: Bukchon-ro 11-gil (a ruela com as casinhas em fileira). Melhor visitar antes das 10h ou após as 17h — moradores ainda vivem lá e o local tem regras de silêncio durante horário de pico. À tarde já estará mais tranquilo.<br><br>Dali, caminhar pelo Insadong para cafés, galerias e lojas de artesanato local.</div>
+      <span class="tag tag-free">gratuito</span>
+      <span class="tag tag-tip">visitar cedo ou fim do dia</span>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="icon-box ib-blue">💧</div>
+        <div>
+          <div class="card-title">Cheonggyecheon — começo ao meio</div>
+          <div class="card-sub">Córrego urbano revitalizado — caminhada ao longo da água</div>
+        </div>
+      </div>
+      <div class="card-body">Passeio ao longo do córrego do início (Cheonggye Plaza, perto do City Hall) até a seção do meio. O percurso é sombreado naturalmente pelas margens e muito mais fresco que as ruas acima — ótima opção no calor de julho. Vários pontos de descanso com bancos e quiosques. À noite, alguns trechos têm iluminação bonita. Total a pé: 2–3 km confortáveis.</div>
+      <span class="tag tag-free">gratuito</span>
+      <span class="tag tag-tip">mais fresco que as ruas — ótimo no calor</span>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="icon-box ib-amber">🌆</div>
+        <div>
+          <div class="card-title">Gwangjang Market — jantar</div>
+          <div class="card-sub">Mercado tradicional mais antigo de Seul (fundado em 1905)</div>
+        </div>
+      </div>
+      <div class="card-body">Terminar o dia aqui para jantar. O "Meokjagolmok" (Food Alley) é o coração gastronômico. Imperdíveis: <strong style="font-weight:500">bindaetteok</strong> (panqueca de feijão mungo frita), <strong style="font-weight:500">mayak kimbap</strong> (mini rolinhos de arroz) e <strong style="font-weight:500">soondae</strong> (linguiça de sangue de porco). Levar dinheiro em espécie.</div>
+      <div class="warn-box">⚠️ Gwangjang ficou famoso e tem alguns feirantes com preços inflados. Observar o que os coreanos estão comendo ao redor antes de sentar — evitar feirantes que abordam muito agressivamente turistas.</div>
+      <span class="tag tag-food">bindaetteok</span>
+      <span class="tag tag-food">mayak kimbap</span>
+      <span class="tag tag-tip">dinheiro em espécie</span>
+    </div>
+  </div>
+
+  <!-- DIA 2 -->
+  <div class="panel" id="dia2">
+    <p class="section-label">Dia 2 — Namsan, vista panorâmica e bairro local</p>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="icon-box ib-green">⛰️</div>
+        <div>
+          <div class="card-title">Namsan — subida a pé para o pôr do sol</div>
+          <div class="card-sub">O programa que você já conhece — e que funciona muito bem</div>
+        </div>
+      </div>
+      <div class="card-body">Sair do hotel por volta das 16h–16h30 para subir sem pressa. A trilha principal saindo de Myeongdong leva cerca de 40–50 minutos. O caminho é arborizado e tem bancos para descanso. Chegar ao topo antes das 18h para pegar a luz dourada e o pôr do sol.<br><br>No topo, a vista de 360° é gratuita — ficar do lado de fora em torno da torre. O Seoul Sky (interior da N Seoul Tower) tem valor de entrada mais alto mas vale para quem quer a experiência mais completa.<br><br><strong style="font-weight:500">Descida:</strong> tem ônibus circular gratuito que leva até o ponto de ônibus na base. Saem regularmente e evitam a descida no escuro ou após o cansaço.</div>
+      <span class="tag tag-free">ponto de vista externo gratuito</span>
+      <span class="tag tag-tip">subir ~16h30 para pegar o pôr do sol</span>
+      <span class="tag tag-transport">ônibus gratuito na descida</span>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="icon-box ib-coral">🌃</div>
+        <div>
+          <div class="card-title">Itaewon / Haebangchon — noite</div>
+          <div class="card-sub">Bairro diverso — restaurantes internacionais e locais</div>
+        </div>
+      </div>
+      <div class="card-body">Namsan fica próximo a Itaewon, o que torna o trajeto natural. Haebangchon (HBC) é a parte mais local, com restaurantes e bares menores que não são direcionados para turistas. Boa pedida para um jantar mais relaxado após a subida. Muitos restaurantes coreanos tradicionais ao lado de opções internacionais.</div>
+      <span class="tag tag-local">menos turístico</span>
+      <span class="tag tag-food">jantar pós-Namsan</span>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="icon-box ib-purple">🏛️</div>
+        <div>
+          <div class="card-title">Opcional manhã: Changdeokgung + Jardim Secreto</div>
+          <div class="card-sub">Segundo palácio mais importante — mais íntimo e arborizado</div>
+        </div>
+      </div>
+      <div class="card-body">Alternativa ao Gyeongbokgung se preferirem algo menos movimentado. O Huwon (Jardim Secreto, 후원) é o grande diferencial — um jardim paisagístico histórico atrás do palácio, com pavilhões e lago. O acesso é por tour guiado separado (reserva antecipada recomendada). Saem visitas a cada hora. Em julho costuma estar verdejante e bonito mesmo com o calor.</div>
+      <span class="tag tag-free">entrada ₩3.000</span>
+      <span class="tag tag-tip">Jardim Secreto: reserva separada</span>
+    </div>
+  </div>
+
+  <!-- DIA 3 -->
+  <div class="panel" id="dia3">
+    <p class="section-label">Dia 3 — Mercado local de verdade e Hangang</p>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="icon-box ib-teal">🛒</div>
+        <div>
+          <div class="card-title">Mangwon Market — manhã</div>
+          <div class="card-sub">O mercado que os seoulitas preferem ao Gwangjang</div>
+        </div>
+      </div>
+      <div class="card-body">A alternativa mais autêntica e menos turística. Menor que o Gwangjang, mais amigável nos preços e com atmosfera de bairro de verdade. De manhã (10h–12h) tem a melhor combinação: feirantes de hortifrúti, quitandas, peixe fresco e comida de rua sem fila longa. Melhor para quem quer ver como os coreanos realmente vivem.<br><br>Fica do lado do Mangwon Hangang Park — dá para caminhar até o parque beira-rio logo depois.</div>
+      <span class="tag tag-local">preferido por locais</span>
+      <span class="tag tag-free">entrada gratuita</span>
+      <span class="tag tag-tip">ir de manhã — melhor horário</span>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="icon-box ib-blue">🏞️</div>
+        <div>
+          <div class="card-title">Hangang Park — tarde / fim do dia</div>
+          <div class="card-sub">Os parques beira-rio são o programa favorito dos seoulitas</div>
+        </div>
+      </div>
+      <div class="card-body">Qualquer um dos parques à margem do Hangang funciona bem. O de Yeouido é o mais famoso. O de Mangwon/Mapo (perto do mercado Mangwon) é mais tranquilo e local. Aluguel de bicicletas no parque é barato e o ciclismo ao longo do rio é excelente.<br><br>Programa local clássico: comprar <strong style="font-weight:500">chimaek</strong> (frango frito + cerveja) por delivery via app e comer no parque na esteira. Seoulitas fazem isso o tempo todo — os apps de delivery entregam no parque com localização por GPS.</div>
+      <div class="highlight-box">💡 Dica do Lucas: Chimaek no parque é o jeito coreano de passar uma tarde/noite à beira do rio. Levar uma esteira descartável (vendida em qualquer conveniência) e pedir entrega pelo Baemin ou Coupang Eats diretamente no parque.</div>
+      <span class="tag tag-local">programa local</span>
+      <span class="tag tag-food">chimaek (frango + cerveja)</span>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="icon-box ib-coral">🐟</div>
+        <div>
+          <div class="card-title">Noryangjin Fish Market — noite</div>
+          <div class="card-sub">Maior mercado de frutos do mar de Seul — 24 horas</div>
+        </div>
+      </div>
+      <div class="card-body">Experiência única: escolher o peixe e frutos do mar vivos nos tanques do andar térreo e levar para um dos restaurantes no andar de cima para cozinhar. Caranguejo, camarão, polvo e sashimi fresquíssimos. Funciona até de madrugada — frequentado por chefs de restaurante que chegam às 3h para o leilão, mas qualquer horário noturno já tem boa movimentação.<br><br>Pegar a linha 1 ou 9 até a estação Noryangjin.</div>
+      <div class="warn-box">⚠️ Fique atento ao custo do "serviço de preparo" cobrado pelos restaurantes do andar de cima — perguntar o valor antes de entregar o peixe. Negocie se necessário. É uma experiência que vale muito, mas exige atenção nos preços cobrados pelos restaurantes.</div>
+      <span class="tag tag-food">frutos do mar frescos</span>
+      <span class="tag tag-night">aberto à noite</span>
+      <span class="tag tag-transport">metrô linha 1 ou 9</span>
+    </div>
+  </div>
+
+  <!-- DIA 4 -->
+  <div class="panel" id="dia4">
+    <p class="section-label">Dia 4 — Seongsu + Ikseon-dong + despedida</p>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="icon-box ib-purple">✨</div>
+        <div>
+          <div class="card-title">Seongsu-dong — a Brooklynização de Seul</div>
+          <div class="card-sub">Antigo bairro industrial convertido em hub criativo</div>
+        </div>
+      </div>
+      <div class="card-body">Seongsu é o bairro mais interessante que surgiu em Seul nos últimos anos. Antigas fábricas e galpões viraram cafés independentes, ateliês, lojas de moda local e espaços culturais com muita personalidade. Muito diferente do Hongdae que ficou popular — Seongsu ainda tem textura industrial e um ritmo mais calmo.<br><br>Vale a visita de manhã para cafés especiais e depois explorar as lojas das ruelas. Fica próximo à Station Seoul Forest.</div>
+      <span class="tag tag-local">hip e local</span>
+      <span class="tag tag-tip">melhor de manhã</span>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="icon-box ib-amber">🏚️</div>
+        <div>
+          <div class="card-title">Ikseon-dong Hanok Village — tarde</div>
+          <div class="card-sub">Beco de casas tradicionais + cafés e restaurantes modernos</div>
+        </div>
+      </div>
+      <div class="card-body">Diferente do Bukchon (mais residencial e preservado), o Ikseon-dong é um beco de casas Hanok que virou corredor gastronômico e de cafés boutique. Muito fotogênico. A dica é ir no início da tarde, antes das 15h, que fica mais tranquilo. As ruelas externas têm mais charme que as principais.</div>
+      <span class="tag tag-food">cafés em casas tradicionais</span>
+      <span class="tag tag-tip">visitar antes das 15h</span>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="icon-box ib-teal">🌁</div>
+        <div>
+          <div class="card-title">Seoul Sky (63 Building ou Lotte Tower) — opcional</div>
+          <div class="card-sub">Observatórios com vista panorâmica — opção premium</div>
+        </div>
+      </div>
+      <div class="card-body">Se quiser gastar com um observatório, o Seoul Sky no Lotte World Tower (em Jamsil) tem a vista mais impressionante — piso de vidro na altura de 500m. Preço mais alto (cerca de ₩27.000 adulto), mas a experiência é diferente do topo do Namsan. Reservar online com antecedência para evitar fila.<br><br>O 63 Building em Yeouido é mais clássico e histórico, com preço um pouco menor.</div>
+      <span class="tag tag-tip">reservar online — evita fila</span>
+    </div>
+  </div>
+
+  <!-- COMIDA -->
+  <div class="panel" id="comida">
+    <p class="section-label">Comidas imperdíveis — o que pedir</p>
+
+    <div class="card">
+      <div class="food-item">
+        <span class="food-emoji">🥞</span>
+        <div><div class="food-name">Bindaetteok (빈대떡)</div><div class="food-desc">Panqueca grossa de feijão mungo com brotos e kimchi, frita em abundante óleo. Melhor no Gwangjang Market. Crocante por fora, macio por dentro.</div></div>
+      </div>
+      <div class="food-item">
+        <span class="food-emoji">🍱</span>
+        <div><div class="food-name">Mayak Kimbap (마약김밥)</div><div class="food-desc">"Kimbap viciante" — mini rolinhos de arroz com vegetais, servidos com molho de mostarda e shoyu. Gwangjang. Baratíssimo e delicioso.</div></div>
+      </div>
+      <div class="food-item">
+        <span class="food-emoji">🍜</span>
+        <div><div class="food-name">Kalguksu (칼국수)</div><div class="food-desc">Macarrão cortado à faca, cozido em caldo de frutos do mar ou frango. Gwangjang tem um beco inteiro dedicado. Muito reconfortante mesmo no calor.</div></div>
+      </div>
+      <div class="food-item">
+        <span class="food-emoji">🐙</span>
+        <div><div class="food-name">Sannakji (산낙지)</div><div class="food-desc">Polvo vivo cortado e servido imediatamente — os tentáculos ainda se movem no prato. Noryangjin. Experiência única. Mastigar bem!</div></div>
+      </div>
+      <div class="food-item">
+        <span class="food-emoji">🍗</span>
+        <div><div class="food-name">Dakgangjeong (닭강정)</div><div class="food-desc">Frango frito coreano com molho agridoce e picante. Versão coreana do "frango frito" — muito diferente do ocidental. Mangwon tem ótimos.</div></div>
+      </div>
+      <div class="food-item">
+        <span class="food-emoji">🥩</span>
+        <div><div class="food-name">Galbi / Samgyeopsal (갈비/삼겹살)</div><div class="food-desc">Churrasco coreano na mesa — costela ou barriga de porco grelhada na brasa com alface, alho e pasta gochujang. Restaurantes especializados por toda a cidade.</div></div>
+      </div>
+      <div class="food-item">
+        <span class="food-emoji">🍦</span>
+        <div><div class="food-name">Bingsu (빙수)</div><div class="food-desc">Sobremesa de gelo raspado com feijão vermelho, frutas e leite condensado. Perfeito para o calor de julho. Várias versões modernas com matcha, morango etc.</div></div>
+      </div>
+      <div class="food-item">
+        <span class="food-emoji">🥤</span>
+        <div><div class="food-name">Sikhye / Soju / Makgeolli</div><div class="food-desc">Sikhye: bebida doce de arroz gelada (não alcoólica). Makgeolli: vinho de arroz espumante e opaco, levemente ácido — bebida tradicional. Soju: inescapável.</div></div>
+      </div>
+    </div>
+
+    <p class="section-label">Mercados de comida de rua — os certos</p>
+    <div class="grid2">
+      <div class="mini-card">
+        <div class="mini-title">🏪 Mangwon Market</div>
+        <div class="mini-body">Melhor opção local. Preços honestos, menos turistas. Bom de manhã. Linha 6, estação Mangwon, saída 2.</div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-title">🏪 Gwangjang Market</div>
+        <div class="mini-body">Mais famoso e turístico, mas ainda vale. Bindaetteok e kimbap são os melhores. Linha 1/3, Jongno 3-ga.</div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-title">🐟 Noryangjin</div>
+        <div class="mini-body">Frutos do mar frescos. Escolhe vivo, sobe no restaurante. Melhor à noite. Linha 1 ou 9.</div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-title">🌙 Bamdokkaebi Night Market</div>
+        <div class="mini-body">Mercado noturno de fim de semana no Hangang Park — só sexta, sábado e domingo. Comida de rua, artesanato, shows.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPRAS -->
+  <div class="panel" id="compras">
+    <p class="section-label">Onde comprar — lojas e experiências, não shoppings</p>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="icon-box ib-purple">🎨</div>
+        <div>
+          <div class="card-title">Insadong — artesanato e cultura</div>
+          <div class="card-sub">Rua principal de galerias, cerâmica e souvenirs de qualidade</div>
+        </div>
+      </div>
+      <div class="card-body">A rua principal do Insadong tem galerias, lojas de papel coreano (hanji), cerâmica, acessórios e cafés temáticos. O Ssamziegil é um complexo interno com lojas de designers independentes — mais interessante que os shoppings. Boa pedida para comprar presentes com qualidade. Linha 3, estação Anguk.</div>
+      <span class="tag tag-local">artesanato coreano</span>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="icon-box ib-teal">🧴</div>
+        <div>
+          <div class="card-title">Myeongdong — skincare e cosméticos</div>
+          <div class="card-sub">Maior concentração de lojas de beleza coreana</div>
+        </div>
+      </div>
+      <div class="card-body">Se a ideia é comprar produtos de skincare coreano (K-beauty), Myeongdong é inescapável. Innisfree, The Face Shop, Etude House, Cosrx — tudo aqui com preços melhores que no Brasil. Os funcionários são proativos com amostras. Ir uma tarde específica e não ficar o dia todo — fica cansativo com o calor. A rua de comida de rua ao lado também tem boas opções de lanche (tornado potato, hotteok).</div>
+      <span class="tag tag-tip">preços melhores que no exterior</span>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="icon-box ib-amber">👗</div>
+        <div>
+          <div class="card-title">Seongsu + Hongdae — moda local e vintage</div>
+          <div class="card-sub">Lojas independentes, marcas locais e vintage</div>
+        </div>
+      </div>
+      <div class="card-body">Seongsu tem as melhores lojas de marcas coreanas independentes — roupas, acessórios e sapatos que não são encontrados em outros países. Hongdae tem mais lojas de vintage e marcas de streetwear coreano. Ambos mais interessantes para quem quer algo diferente do padrão de shopping.</div>
+      <span class="tag tag-local">marcas coreanas independentes</span>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="icon-box ib-blue">📦</div>
+        <div>
+          <div class="card-title">Daiso (다이소) — compras práticas</div>
+          <div class="card-sub">Versão coreana do "tudo por 1.000 won" — bem melhor que o nome sugere</div>
+        </div>
+      </div>
+      <div class="card-body">Não é só uma loja de 1.000 won — tem produtos práticos de qualidade muito superior ao esperado. Ótimo para comprar: acessórios de cozinha, artigos de papelaria, organizadores de mala, snacks, produtos de beleza básicos e brindes para levar para casa. Tem em vários pontos da cidade.</div>
+      <span class="tag tag-tip">não subestime — tem coisas muito boas</span>
+    </div>
+
+    <div class="highlight-box" style="margin-top: 1rem;">
+      💡 <strong style="font-weight:500">Conveniências coreanas</strong> — GS25, CU e 7-Eleven merecem uma visita só pelo ritual de comprar: ovo cozido temperado, triângulos de kimbap, ramen instantâneo feito na hora com água quente na loja, sorvetes únicos. Muito mais do que "conveniência" no sentido ocidental.
+    </div>
+  </div>
+</div>
+
+<script>
+  function show(id) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>

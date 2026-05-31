@@ -1,0 +1,7 @@
+.claude/
+.gemini/
+.idea/
+.vscode/
+*.tmp
+thumbs.db
+desktop.ini
