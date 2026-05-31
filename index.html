@@ -810,7 +810,7 @@
                 <div class="card-sub">Córrego revitalizado no coração da metrópole</div>
               </div>
             </div>
-            <div class="card-body">Um oásis verdejante de 3 km abaixo do nível da rua. Graças à água corrente e pontes, caminhar por aqui é incrivelmente fresco e agradável em julho.</div>
+            <div class="card-body">Um oásis verdejante de 3 km abaixo do nível da rua. Graças à água corrente e pontes, caminhar por aqui é incrivelmente fresco e agradável in julho.</div>
             <div class="card-tags">
               <span class="tag tag-free">gratuito</span>
               <span class="tag tag-local">refúgio urbano</span>
@@ -934,7 +934,7 @@
             <div class="card-body">Menos turístico que Gwangjang. Excelente para ver a vida coreana real, comprar frutas e provar espetinhos agridoces crocantes de frango frito (Dakgangjeong).</div>
             <div class="card-tags">
               <span class="tag tag-local">atmosfera de bairro</span>
-              <span class="tag tag-food">chimaek local</span>
+              <span class="tag tag-food">lanches e frituras</span>
             </div>
           </div>
         </div>
@@ -1116,28 +1116,29 @@
         <div class="food-card" onclick="openModal('d-food-naengmyeon', 'Naengmyeon (물냉면)', '🍜')">
           <div class="food-card-img">
             <span class="fallback-emoji">🍜</span>
-            <!-- Pedido de foto para Naengmyeon ao usuário -->
+            <img src="mul-naengmyeon.jpg" alt="Naengmyeon" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
           </div>
           <div class="food-card-info">
             <div class="food-card-title">Naengmyeon (Macarrão de Verão em Caldo Gelado) — 물냉면 ❄️</div>
-            <div class="food-card-desc">Macarrão fino e elástico servido em um caldo ácido e salgado com pedras de gelo, pepino, pera coreana e ovo cozido. O maior salvador no calor de julho! <em>(Solicite a foto deste prato!)</em></div>
+            <div class="food-card-desc">Macarrão fino e elástico servido em um caldo ácido e salgado com pedras de gelo, pepino, pera coreana e ovo cozido. O maior salvador no calor de julho!</div>
           </div>
         </div>
 
         <div class="food-card" onclick="openModal('d-food-drinks', 'Milkis &amp; Bebidas Coreanas', '🥤')">
           <div class="food-card-img">
             <span class="fallback-emoji">🥤</span>
-            <!-- Pedido de foto para Milkis ao usuário -->
+            <img src="Milkis.jpg" alt="Refrigerante Milkis" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
           </div>
           <div class="food-card-info">
             <div class="food-card-title">Milkis &amp; Bebidas Refrescantes Coreanas — 밀키스 🥛</div>
-            <div class="food-card-desc">Prove Milkis, o famoso refrigerante de leite com gás carbonatado cremoso e suave, Sikhye (bebida de arroz doce e gelada) e chás nos copos de gelo. <em>(Solicite a foto deste prato!)</em></div>
+            <div class="food-card-desc">Prove Milkis, o famoso refrigerante de leite com gás carbonatado cremoso e suave, Sikhye (bebida de arroz doce e gelada) e chás nos copos de gelo.</div>
           </div>
         </div>
 
-        <div class="food-card" onclick="openModal('d-food-tteokbokki', 'Tteokbokki (떡볶이)', '🌶️')">
+        <div class="food-card" onclick="openModal('d-food-tteokbokki', 'Tteokbokki (떡볶i)', '🌶️')">
           <div class="food-card-img">
             <span class="fallback-emoji">🌶️</span>
+            <img src="R00397-Hot-Spicy-Tteokbokki.jpg" alt="Tteokbokki Apimentado" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
           </div>
           <div class="food-card-info">
             <div class="food-card-title">Tteokbokki (Bolinhos de Arroz Apimentados) — 떡볶이 ⚠️</div>
@@ -1145,9 +1146,21 @@
           </div>
         </div>
 
+        <div class="food-card" onclick="openModal('d-food-kimchijjigae', 'Kimchi Jjigae (김치찌개)', '🍲')">
+          <div class="food-card-img">
+            <span class="fallback-emoji">🍲</span>
+            <img src="kimchijjigae.jpg" alt="Kimchi Jjigae" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="food-card-info">
+            <div class="food-card-title">Kimchi Jjigae (Ensopado Quente de Kimchi) — 김치찌개 🌶️🌶️</div>
+            <div class="food-card-desc">O cozido mais clássico de Seul, feito com kimchi fermentado, tofu, carne de porco e cebolinha. Servido borbulhando e <strong>muito picante</strong>!</div>
+          </div>
+        </div>
+
         <div class="food-card" onclick="openModal('d-food-bulgogi', 'Bulgogi (불고기)', '🥩')">
           <div class="food-card-img">
             <span class="fallback-emoji">🥩</span>
+            <img src="galbi.jpg" alt="Bulgogi" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
           </div>
           <div class="food-card-info">
             <div class="food-card-title">Bulgogi (Carne Grelhada Suave e Adocicada) — 불고기 ✅</div>
@@ -1162,7 +1175,7 @@
           </div>
           <div class="food-card-info">
             <div class="food-card-title">Bindaetteok (Panqueca de Feijão Mungo) — 빈대떡</div>
-            <div class="food-card-desc">Frita em óleo abundante até ficar extremamente crocante por fora e macia por dentro. A joia do Gwangjang Market.</div>
+            <div class="food-card-desc">Frita em óleo abundante até ficar extremamente crocante por fora e macia por dentro. A conclusão perfeita para o Dia Cultural.</div>
           </div>
         </div>
 
@@ -1205,19 +1218,8 @@
             <img src="bingsu.jpg" alt="Bingsu" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
           </div>
           <div class="food-card-info">
-            <div class="food-card-title">Bingsu (Sobremesa Gelada de Leite) — 빙su</div>
+            <div class="food-card-title">Bingsu (Sobremesa Gelada de Leite) — &nbsp;빙수</div>
             <div class="food-card-desc">Flocos de neve de leite raspado com doces de feijão vermelho (Patbingsu) ou morango, manga, matcha e leite condensado.</div>
-          </div>
-        </div>
-
-        <div class="food-card" onclick="openModal('d-food-galbi', 'Korean BBQ', '🥩')">
-          <div class="food-card-img">
-            <span class="fallback-emoji">🥩</span>
-            <img src="galbi.jpg" alt="Galbi" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
-          </div>
-          <div class="food-card-info">
-            <div class="food-card-title">Galbi &amp; Samgyeopsal (Churrasco na Mesa) — 갈비/삼겹살</div>
-            <div class="food-card-desc">Costela de boi marinada ou barriga de porco grelhadas na brasa ao centro da mesa. O maior ritual social e culinário.</div>
           </div>
         </div>
 
@@ -1227,7 +1229,7 @@
             <img src="beondegi.jpg" alt="Beondegi" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
           </div>
           <div class="food-card-info">
-            <div class="food-card-title">Beondegi (Larvas de Bicho-da-Seda) — 번데기</div>
+            <div class="food-card-title">Beondegi (Larvas de Bicho-da-Seda) — &nbsp;번데기</div>
             <div class="food-card-desc">Lanche exótico tradicional de rua: larvas cozidas no vapor com aroma terroso intenso. Um desafio divertido para a família!</div>
           </div>
         </div>
@@ -1320,6 +1322,27 @@
             <div class="card-tags">
               <span class="tag tag-local">streetwear</span>
               <span class="tag tag-tip">lojas pop-up gratuitas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('d-kpop-bacchus', 'Bacchus &amp; Energéticos Coreanos', '⚡')">
+          <div class="card-img">
+            <span class="fallback-emoji">⚡</span>
+            <img src="Bacchus 01.jpg" alt="Bebida Bacchus" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+          </div>
+          <div class="card-content">
+            <div class="card-head">
+              <div class="icon-box ib-amber">⚡</div>
+              <div class="card-title-box">
+                <div class="card-title">Bacchus &amp; Energéticos Coreanos</div>
+                <div class="card-sub">O tônico número 1 de recuperação energética da Coreia</div>
+              </div>
+            </div>
+            <div class="card-body">A lendária garrafinha de energia coreana. Ideal para combater o cansaço do sol e repor as energias após caminhadas de turismo.</div>
+            <div class="card-tags">
+              <span class="tag tag-tip">tônico energético</span>
+              <span class="tag tag-food">GS25 &amp; CU</span>
             </div>
           </div>
         </div>
@@ -1465,7 +1488,7 @@
       <p>O cartão físico custa de ₩3.000 a ₩4.000. Para utilizá-lo, você deve carregá-lo com saldo utilizando <strong>dinheiro físico coreano (Won)</strong> nas máquinas das estações ou caixas das lojas de conveniência.</p>
       <p>Ele serve para pagar metrô, trens urbanos, ônibus e táxis de Seul. A sua grande vantagem é permitir a <strong>integração tarifária gratuita</strong> entre trens, metrô e ônibus: se você pegar um ônibus em até 30 minutos após sair do metrô, o trajeto de ônibus sai gratuito ou com grande desconto!</p>
       <div class="highlight-box">
-        🚌 <strong>Dica sobre os Ônibus BRT:</strong> Os ônibus de Seul são extremamente eficientes e rápidos devido aos corredores centrais exclusivos (*BRT*). Eles não pegam o engarrafamento dos carros e cruzam as grandes avenidas em tempo recorde! Para trajetos curtos ou médios que não tenham estação de metrô direta, vá de ônibus.
+        🚌 <strong>Dica sobre os Ônibus BRT:</strong> Os ônibus de Seul são extremamente eficientes e rápidos devido aos corredores exclusivas centrais (*BRT*). Eles não pegam o engarrafamento dos carros e cruzam as grandes avenidas em tempo recorde! Para trajetos curtos ou médios que não tenham estação de metrô direta, vá de ônibus.
       </div>
     </div>
 
@@ -1660,7 +1683,7 @@
     </div>
 
     <div id="d-ikseon">
-      <p>O bairro de <strong>Ikseon-dong Hanok Village</strong> é um dos enclaves comerciais mais charmosos e pitorescos de Seul, fundado originalmente em 1920 como um conjunto habitacional residencial acessível de casas tradicionais (*Hanok*).</p>
+      <p>O bairro de <strong>Ikseon-dong Hanok Village</strong> é um dos enclaves comerciais mais charmosos e pitorescos de Seul, fundado originalmente in 1920 como um conjunto habitacional residencial acessível de casas tradicionais (*Hanok*).</p>
       <p>Diferente de Bukchon, as casas Hanoks de Ikseon-dong foram inteiramente convertidas no nível térreo em comércios boutiques e confeitarias conceituais fantásticas.</p>
       <p><strong>Destaques do Bairro:</strong></p>
       <ul>
@@ -1676,7 +1699,7 @@
       <p>A imensa torre <strong>Lotte World Tower</strong>, com 555 metros de altura e 123 andares, é o edifício mais alto da Coreia do Sul e o 6º mais alto do mundo, localizada no bairro de Jamsil.</p>
       <p><strong>A Experiência no Observatório Seoul Sky:</strong></p>
       <ul>
-        <li>A subida é feita através do *Sky Shuttle*, um elevador de alta velocidade com telas de projeção de LED de 360° nas paredes internas que contam a história de Seul in uma viagem multimídia incrível de 60 segundos.</li>
+        <li>A subida é feita através do *Sky Shuttle*, um elevador de alta velocidade com telas de projeção de LED de 360° nas paredes internas que contam a história de Seul em uma viagem multimídia incrível de 60 segundos.</li>
         <li>No observatório (andares 117 a 123), o grande destaque é o **piso de vidro translúcido** a quase 500 metros de altura, onde você caminha com a sensação extraordinária de flutuar livremente sobre os carros e pontes do rio Hangang lá embaixo.</li>
         <li>O local conta com café panorâmico de altura e loja de lembranças exclusivas. O ingresso custa cerca de ₩27.000 por adulto e vale muito reservar online com antecedência.</li>
       </ul>
@@ -1705,9 +1728,6 @@
         <li>Na mesa, costuma-se cortar o macarrão uma ou duas vezes com uma tesoura de metal fornecida pelo garçom, pois os fios são muito longos e elásticos.</li>
         <li>Adicione vinagre de arroz leve e mostarda amarela picante (*mustard oil*) a gosto para obter um caldo deliciosamente ácido, picante, salgado e extremamente refrescante.</li>
       </ul>
-      <div class="highlight-box">
-        📸 <strong>Pedido de Foto:</strong> Se você tiver uma foto pessoal deste prato maravilhoso, compartilhe comigo para adicionarmos e ilustrarmos este card de forma ainda mais premium!
-      </div>
     </div>
 
     <div id="d-food-drinks">
@@ -1717,9 +1737,6 @@
         <li><strong>Sikhye (식혜)</strong>: Bebida tradicional não-alcoólica de arroz doce fermentado com grãos de arroz cozidos boiando no fundo. É servida trincando de gelada, sendo muito digestiva e doce.</li>
         <li><strong>Bebidas em saquinhos das Conveniências:</strong> Chás de pêssego, lichia e limonadas azuis despejados em copos de plástico cheios de gelo.</li>
       </ul>
-      <div class="highlight-box">
-        📸 <strong>Pedido de Foto:</strong> Caso possua alguma foto dessas latas de Milkis ou copos de bebidas de conveniência, envie-me para integrarmos a imagem diretamente neste card!
-      </div>
     </div>
 
     <div id="d-food-tteokbokki">
@@ -1729,6 +1746,16 @@
       <div class="warn-box">
         🌶️ <strong>Aviso de Pimenta Forte:</strong> Este prato é tradicionalmente <strong>bastante apimentado</strong>. A combinação de calor do cozimento e a pimenta Gochujang confere uma ardência duradoura. Tenha um copo de água ou uma lata de Milkis por perto para acalmar as papilas gustativas!
       </div>
+    </div>
+
+    <div id="d-food-kimchijjigae">
+      <p>O <strong>Kimchi Jjigae (김치찌개)</strong> é o ensopado nacional mais consumido no dia a dia coreano, servido em tigelas pretas de pedra vulcânica quente (*ttukbaegi*) fervendo de forma impressionante.</p>
+      <p>É feito cozinhando kimchi bem curado e fermentado (o que confere acidez profunda e sabor complexo) junto com pedaços suculentos de carne de porco gorda, tofu macio cortado em cubos, cebola e cebolinha em um caldo concentrado de anchovas e bastante pó de pimenta vermelha (*Gochugaru*).</p>
+      <p><strong>Ensopado Picante e Quente:</strong></p>
+      <ul>
+        <li><strong>Picância Intensa</strong>: É classificado como um prato com <strong>picância de nível elevado</strong>. A alta temperatura da pedra mantém a sopa fervendo na mesa, intensificando a sensação de ardência da pimenta.</li>
+        <li>Acompanha arroz branco cozido no vapor (que funciona como base neutra para acalmar a boca) e variados pratos de acompanhamento (*banchan*). Misture colheradas de ensopado quente no seu arroz para comer!</li>
+      </ul>
     </div>
 
     <div id="d-food-bulgogi">
@@ -1773,24 +1800,21 @@
       <p>As versões contemporâneas deliciosas substituem o feijão por fartas porções de frutas tropicais frescas (morango ou manga doce fatiada) com sorvete de baunilha, calda de chocolate, pedaços de queijo cheesecake ou bolacha Oreo triturada. A rede nacional especializada **Sulbing** é o melhor local para provar em família!</p>
     </div>
 
-    <div id="d-food-galbi">
-      <p>O <strong>Korean BBQ (Churrasco Coreano)</strong> é uma das maiores experiências gastronômicas interativas do mundo. Ao centro da mesa de madeira é instalada uma grelha circular com brasas de carvão ou aquecimento a gás.</p>
-      <p><strong>Os Cortes Principais:</strong></p>
+    <!-- KPOP DETAILS & BACCHUS -->
+    <div id="d-kpop-bacchus">
+      <p>O <strong>Bacchus (박카스)</strong> é o tônico de recuperação física e energia mais tradicional e consumido da Coreia do Sul, produzido originalmente pela Dong-A Pharmaceutical desde 1963.</p>
+      <p><strong>Características Principais:</strong></p>
       <ul>
-        <li><strong>Galbi (갈bi)</strong>: Nobres costelas bovinas marinadas por horas em um molho doce de soja, alho, gergelim e purê de pera coreana que amacia a carne de forma perfeita.</li>
-        <li><strong>Samgyeopsal (Samgyeopsal)</strong>: Tiras espessas de barriga de porco grelhadas na chapa sem marinada, servidas crocantes.</li>
+        <li>Originalmente lançado como uma pílula herbal para proteger o fígado, hoje é comercializado como uma bebida energética de cor amarelada rica em taurina, geleia real e complexos de vitamina B.</li>
+        <li>Tem um sabor cítrico doce inconfundível, extremamente agradável e refrescante.</li>
+        <li><strong>Consumo Nacional Coreano</strong>: É consumido massivamente por estudantes universitários varando noites em exames e profissionais de escritório coreanos para espantar a estafa física diária.</li>
+        <li>Ele vem nas icônicas garrafinhas clássicas de vidro marrom escuro (chamado Bacchus-D, vendido em farmácias) ou em latas e garrafas maiores (Bacchus-F, com taurina extra, amplamente vendido em qualquer conveniência GS25 ou CU).</li>
       </ul>
-      <p><strong>O Ritual do Ssam (Trouxinha):</strong></p>
-      <p>Pegue uma folha verde de alface ou gergelim, deite um pedaço de carne assada quente sobre ela, adicione alho frito na grelha, kimchi quente e feche com uma colher de *Ssamjang* (uma pasta temperada de soja fermentada e pimenta). Dobre a folha fazendo um pequeno embrulho selado e coloque-o de uma só vez na boca! É a perfeita comunhão de frescor crocante, calor e riqueza de sabores.</p>
+      <div class="highlight-box">
+        ⚡ <strong>Dica de Sobrevivência em Julho:</strong> Trata-se da melhor bebida de reposição rápida de energias para a Renata e família! Tome um Bacchus gelado no meio da tarde para eliminar instantaneamente a fadiga das pernas após horas subindo colinas nos Hanoks ou templos.
+      </div>
     </div>
 
-    <div id="d-food-beondegi">
-      <p>O <strong>Beondegi (번데기)</strong> é uma comida de rua tradicional coreana bastante exótica, muito popular como lanche rápido salgado.</p>
-      <p>Consiste em pupas e larvas de bicho-da-seda fervidas e cozidas no vapor com temperos de sal e condimentos simples, servidas quentes em pequenos copos de papel descartáveis nos parques e mercados de rua.</p>
-      <p>Possui um aroma forte, terroso e singular muito característico. A textura externa é elástica e "estoura" de leve ao mastigar, revelando um miolo macio de sabor terroso que lembra nozes cozidas e castanhas tostadas. Os adolescentes vão adorar tirar fotos e brincar desafiando uns aos outros a experimentar essa delícia tradicional!</p>
-    </div>
-
-    <!-- KPOP DETAILS -->
     <div id="d-kpop-hongdae">
       <p>Localizado ao redor da renomada Universidade de Artes Hongik, o bairro de <strong>Hongdae</strong> é o epicentro absoluto da juventude, arte urbana e música independente de Seul.</p>
       <p><strong>Atrações Especiais para Adolescentes:</strong></p>
