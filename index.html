@@ -673,6 +673,30 @@
       margin-bottom: 4px;
     }
     
+    .modal-img-container {
+      width: 100%;
+      margin: 12px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #E8E7E2;
+      background-color: #EFEEDB;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    
+    .modal-body-img {
+      width: 100%;
+      height: auto;
+      max-height: 280px;
+      object-fit: cover;
+      display: block;
+      opacity: 0;
+      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .modal-body-img.loaded {
+      opacity: 1;
+    }
+    
     @media (min-width: 768px) {
       .modal-overlay {
         align-items: center;
@@ -1539,7 +1563,7 @@
         <div class="card" onclick="openModal('d-compras-skincare', 'Myeongdong Skincare', '🧴')">
           <div class="card-img">
             <span class="fallback-emoji">🧴</span>
-            <img src="myeongdong-night-market-58-1024x689.jpg" alt="Myeongdong Skincare" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+            <img src="K_BEAUTY_images.jpg" alt="Myeongdong Skincare" loading="lazy" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
           </div>
           <div class="card-content">
             <div class="card-head">
@@ -2073,14 +2097,44 @@
     </div>
 
     <div id="d-compras-skincare">
-      <p>A Coreia do Sul é o epicentro global da inovação em cuidados de beleza e pele (*K-Beauty*). O calçadão de <strong>Myeongdong</strong> concentra a maior densidade mundial de lojas deste segmento por metro quadrado.</p>
-      <p><strong>Onde Comprar:</strong></p>
+      <p>A Coreia do Sul é o paraíso absoluto de cuidados com a pele. Em Seul, a cultura do <em>skincare</em> está em todo lugar, mas o epicentro das compras é o calçadão de <strong>Myeongdong</strong>. Aqui você vai encontrar a maior concentração de lojas de cosméticos que você já viu na vida. É fácil se perder ou comprar por impulso, então aqui vão as minhas <strong>recomendações reais de quem já esteve lá e sabe o que realmente vale a pena levar</strong>.</p>
+      
+      <div class="modal-img-container">
+        <img src="olive-young-lede.jpg" alt="Olive Young Flagship" class="modal-body-img">
+      </div>
+
+      <p><strong>🛍️ As Lojas que Você Precisa Ir (com Endereços Reais)</strong></p>
       <ul>
-        <li><strong>Olive Young:</strong> A monumental drogaria de beleza mais famosa da Coreia. É o paraíso definitivo do skincare: encontre protetores solares fluidos de textura aquosa invisível, séruns de mucina de caracol hidratantes, adesivos contra acne e máscaras faciais de hidratação.</li>
-        <li>Lojas próprias e gigantescas de marcas icônicas como Innisfree, Cosrx, Laneige e Nature Republic com decorações de plantas vivas fantásticas.</li>
+        <li><strong>Olive Young Myeongdong Town (A Flagship de 2 Andares):</strong>
+          <br><small>📍 <em>53 Myeongdong-gil, Jung-gu</em></small>
+          <br>Essa é a "Meca" do skincare coreano. É gigante, tem absolutamente todas as marcas queridinhas que viralizam no TikTok e no Instagram. <strong>Dica de amigo:</strong> Ela vive lotada, uma loucura completa. Se puder, vá de manhã bem cedo (abre às 10h) ou no início da tarde. Se quiser comprar com calma, vá nas filiais de outros bairros como a de <strong>Seongsu-dong</strong> (📍 <em>137 Achasan-ro</em>) ou a de <strong>Hongdae Town</strong> (📍 <em>156 Yanghwa-ro</em>), que são bem mais tranquilas e frequentadas por moradores locais.
+        </li>
+        <li><strong>Innisfree The House (Myeongdong Flagship Store):</strong>
+          <br><small>📍 <em>15 Myeongdong-gil, Jung-gu</em></small>
+          <br>Uma loja conceito belíssima de 3 andares, super instagramável e com uma parede verde de plantas reais incrível. Foca em ingredientes naturais vindos da ilha de Jeju. Além de comprar os famosos produtos de chá verde, o último andar tem um café com sobremesas lindas.
+        </li>
+        <li><strong>CHICOR Myeongdong:</strong>
+          <br><small>📍 <em>17 Myeongdong-gil, Jung-gu</em></small>
+          <br>Conhecida como a "Sephora Coreana". Se você procura maquiagens de marcas mais modernas e premium (como Hera, Sulwhasoo ou a marca cult 3CE), esse é o lugar. O ambiente é ótimo e dá para testar tudo sem pressão das vendedoras.
+        </li>
       </ul>
-      <div class="highlight-box">
-        💡 <strong>Reembolso de Impostos (Tax Free):</strong> Tenha seu passaporte físico original em mãos ao comprar nas grandes lojas de Myeongdong, pois a maioria oferece o desconto ou reembolso imediato do imposto no caixa no ato do pagamento! As funcionárias também oferecem fartas amostras grátis de cosméticos ao entrar ou comprar.
+
+      <p><strong>🌟 O Guia de Compras: O que Realmente Vale a Pena Trazer?</strong></p>
+      <p>Esqueça os cremes genéricos e foque no que a Coreia faz melhor do que qualquer outro lugar do mundo (e por um preço inacreditável lá):</p>
+      <ul>
+        <li><strong>Protetores Solares Coreanos:</strong> Esqueça aquela textura grudenta que deixa a cara branca. Os protetores de lá parecem um hidratante leve em gel. Os mais amados são o <strong>Round Lab (Birch Juice)</strong> e o <strong>Beauty of Joseon (Relief Sun)</strong>. Compre de estoque (geralmente vendem em pacotes duplos em promoção na Olive Young).</li>
+        <li><strong>Adesivos de Espinha (Pimple Patches):</strong> O da marca própria da Olive Young (**Care Plus**) custa preço de bala (cerca de ₩2.000 a ₩3.000 com dezenas de adesivos) e funciona de verdade. No Brasil custa uma fortuna. Compre vários para trazer de lembrança pros amigos!</li>
+        <li><strong>Tônico de Heartleaf da Anua (Heartleaf 77% Soothing Toner):</strong> É o tônico mais vendido da Coreia. Em julho, com o calorão úmido de Seul, a pele costuma ficar irritada ou com acne de suor. Esse tônico acalma e hidrata a pele na hora.</li>
+        <li><strong>Pads de Tratamento (Mediheal Pads):</strong> São potinhos com disquinhos de algodão já embebidos em sérums ativos (o de *Tea Tree* azul e o de *Madecassoside* verde são os melhores). Os coreanos usam muito como "mini máscaras" de 5 minutos nas bochechas e na testa antes de maquiar ou antes de dormir.</li>
+        <li><strong>Sérum de Mucina de Caracol da COSRX:</strong> Sim, baba de caracol! Parece estranho, mas tem um poder regenerador e de hidratação surreal. Deixa a pele com aquele efeito viçoso saudável ("glass skin").</li>
+      </ul>
+
+      <div class="highlight-box" style="margin-top: 15px; border-left: 3px solid #E8614A;">
+        💡 <strong>Dica de Ouro — Tax Free Imediato:</strong> Não faça a besteira de deixar para pedir o Tax Free no aeroporto de Incheon na volta. É uma fila gigantesca e burocrática. Nas grandes lojas de Myeongdong (como a Olive Young flagship e a Daiso de 12 andares), <strong>apresente o seu passaporte físico no caixa no momento do pagamento</strong>. Se a compra passar de ₩15.000, eles já abatem o imposto na hora e você paga o valor líquido reduzido. Economiza tempo e Won!
+      </div>
+      
+      <div class="warn-box" style="margin-top: 12px; border-left: 3px solid #EF9F27;">
+        🎁 <strong>Amostras Grátis:</strong> Na Coreia, a cultura de dar amostras grátis ("service") é muito forte. Se você entrar em lojas de marcas exclusivas em Myeongdong, mesmo que não compre muito, as funcionárias costumam encher sua sacola de miniaturas de cremes, máscaras e séruns. Vale super a pena!
       </div>
     </div>
 
